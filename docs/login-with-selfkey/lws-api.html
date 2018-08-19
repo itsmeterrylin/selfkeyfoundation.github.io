@@ -23,44 +23,74 @@
             });
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Login with SelfKey API Documentation</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="summary-of-components"></a><a href="#summary-of-components" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Summary of Components</h2>
 <h3><a class="anchor" aria-hidden="true" id="client-implementation"></a><a href="#client-implementation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Client Implementation</h3>
-<p>The client implementation component is the part of the authentication system that is displayed in the browser from the integrators website.</p>
+<p>The client implementation component is the part of the authentication system that is displayed in the browser from the integrators website.  This includes the code snippets for the button, modal and iFrame as well as the config object.</p>
 <h3><a class="anchor" aria-hidden="true" id="selfkey-connect-browser-extension"></a><a href="#selfkey-connect-browser-extension" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SelfKey Connect Browser Extension</h3>
-<p>The SelfKey Connect API is a combination of 3 components:
-* Content Script
-* iFrame
-* Background Script
-These 3 components work together with the content script used to interact with the DOM, the iFrame used to manage the UI and the background script used to communicate with the SelfKey Identity Wallet.  To communicate internally within the Browser Extension, Chrome messaging protocol is used and JSON objects with required data are passed from component to component.</p>
+<p>The SelfKey Connect API is a combination of 3 components:</p>
+<ul>
+<li>Content Script</li>
+<li>lws.js (Main Script)</li>
+<li>Background Script
+These 3 components work together to communicate both internally and externally.   The content script used to interact with the browser DOM, lws.js manages user interaction and the UI state displayed in the iFrame while the background script is used to communicate with the SelfKey Identity Wallet.  To communicate internally within the Browser Extension, Chrome Messaging protocol is used and JSON objects with required data are passed between components.</li>
+</ul>
 <h3><a class="anchor" aria-hidden="true" id="selfkey-identity-wallet"></a><a href="#selfkey-identity-wallet" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SelfKey Identity Wallet</h3>
 <p>The SelfKey Identity Wallet communicates with the SelfKey Connect Browser Extension via a Websockets connection and communicates with the Server Implementation via HTTP requests.</p>
 <h3><a class="anchor" aria-hidden="true" id="server-implementation"></a><a href="#server-implementation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Server Implementation</h3>
 <p>The Server Implementation communicates with the SelfKey Identity Wallet by providing a JSON REST API for HTTP requests.</p>
 <h2><a class="anchor" aria-hidden="true" id="message-body-examples"></a><a href="#message-body-examples" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Message Body Examples</h2>
 <h3><a class="anchor" aria-hidden="true" id="chrome-messaging"></a><a href="#chrome-messaging" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Chrome Messaging</h3>
-<p>Messages passed internally using Chrome Messaging between the SelfKey Connect Browser Extension components (Content / iFrame / Background)
-<strong>Request Example</strong></p>
+<p>Messages passed internally using Chrome Messaging between the SelfKey Connect Browser Extension components (Content / iFrame / Background)</p>
+<h4><a class="anchor" aria-hidden="true" id="example"></a><a href="#example" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example</h4>
+<p><strong>Request</strong></p>
 <pre><code class="hljs css languages- json">{
-    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"getWallets"</span>
+    <span class="hljs-attr">"request"</span>: <span class="hljs-string">"wallets"</span>
+}
+</code></pre>
+<p><strong>Response</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"response"</span>: <span class="hljs-string">"wallets"</span>,
+    <span class="hljs-attr">"wallets"</span>: [
+        {
+            <span class="hljs-attr">"address"</span>: <span class="hljs-string">"0xabcd1234"</span>,
+            <span class="hljs-attr">"status"</span>: <span class="hljs-string">"locked"</span>
+        }
+    ]
 }
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="websockets"></a><a href="#websockets" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Websockets</h3>
-<p>Messages passed between the SelfKey Connect Browser Extension and the SelfKey Identity Wallet using Websockets
-<strong>Request Example</strong></p>
+<p>Messages passed between the SelfKey Connect Browser Extension and the SelfKey Identity Wallet using Websockets</p>
+<h4><a class="anchor" aria-hidden="true" id="example-1"></a><a href="#example-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example</h4>
+<p><strong>Request</strong></p>
 <pre><code class="hljs css languages- json">{
-    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"getWallet"</span>,
-    <span class="hljs-attr">"address"</span>: <span class="hljs-string">"0x1234abcd"</span>
+    <span class="hljs-attr">"request"</span>: <span class="hljs-string">"unlock"</span>,
+    <span class="hljs-attr">"address"</span>: <span class="hljs-string">"0x1234abcd"</span>,
+    <span class="hljs-attr">"password"</span>: <span class="hljs-string">"pass1234"</span>
+}
+</code></pre>
+<p><strong>Response</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"response"</span>: <span class="hljs-string">"unlock"</span>,
+    <span class="hljs-attr">"address"</span>: <span class="hljs-string">"0x1234abcd"</span>,
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Keystore Unlocked"</span>
 }
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="http"></a><a href="#http" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>HTTP</h3>
-<p>Sent from the SelfKey Identity Wallet either a GET request possibly with query string or a POST request with multipart form data
-<strong>Request Example</strong></p>
+<p>Sent from the SelfKey Identity Wallet either a GET request possibly with query string or a POST request with multipart form data</p>
+<h4><a class="anchor" aria-hidden="true" id="example-2"></a><a href="#example-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Example</h4>
+<p><strong>Request</strong></p>
 <pre><code class="hljs css languages- json">{
     <span class="hljs-attr">"wallet"</span>: <span class="hljs-string">"0x1234abcd"</span>,
+    <span class="hljs-attr">"nonce"</span>: <span class="hljs-string">"54321edcba09876"</span>,
     <span class="hljs-attr">"signature"</span>: <span class="hljs-string">"{\"r\":{\"type\":\"Buffer\",\"data\":[215,252,52,209,99,115,65,20,176,235,54,88,127,105,159,87,211,198,96,96,196,194,207,121,162,11,40,127,82,95,131,13]},\"s\":{\"type\":\"Buffer\",\"data\":[80,25,172,33,158,87,250,185,205,28,213,156,102,150,182,82,245,78,175,18,35,87,16,123,160,10,197,42,163,156,2,58]},\"v\":28}"</span>
 }
 </code></pre>
-<h1><a class="anchor" aria-hidden="true" id="preflight"></a><a href="#preflight" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Preflight</h1>
-<p>This part of the system is running before in the background before any user interaction takes place.  The purpose is to verify successful connections between the Integrating Client Implementation, SelfKey Connect Browser Extension, SelfKey Identity Wallet and the Integrating LWS API Implementation.  If all connections are working then when the user clicks the Login with SelfKey button in the browser, the authentication process with begin successfully, otherwise an error message with instructions will be displayed to the user explaining which component is not working and instructions on how to download and run the missing component (Browser Extension or Wallet App) This will also handle any errors from the 3rd party implementation having connection issues, for example if the API Implementation is down.</p>
+<p><strong>Response</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"redirectUrl"</span>: <span class="hljs-string">"/success.html"</span>
+}
+</code></pre>
 <h2><a class="anchor" aria-hidden="true" id="1-preflight-connect-checks"></a><a href="#1-preflight-connect-checks" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1: Preflight Connect Checks</h2>
+<p>This part of the system is running before in the background before any user interaction takes place.  The purpose is to verify successful connections between the Integrating Client Implementation, SelfKey Connect Browser Extension, SelfKey Identity Wallet and the Integrating LWS API Implementation.</p>
+<p>If all connections are working then when the user clicks the Login with SelfKey button in the browser, the authentication process with begin successfully, otherwise an error message with instructions will be displayed to the user explaining which component is not working and instructions on how to download and run the missing component (Browser Extension or Wallet App) This will also handle any errors from the 3rd party implementation having connection issues, for example if the API Implementation is down.</p>
 <h3><a class="anchor" aria-hidden="true" id="1a-lws-init"></a><a href="#1a-lws-init" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1.a LWS_INIT</h3>
 <ul>
 <li><strong>Source:</strong> Client Implementation</li>
@@ -71,16 +101,18 @@ These 3 components work together with the content script used to interact with t
 </ul>
 <p><strong>Request Example</strong></p>
 <pre><code class="hljs css languages- json">{
-    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"ping"</span>
+    <span class="hljs-attr">"request"</span>: <span class="hljs-string">"init"</span>
 }
 </code></pre>
 <p><strong>Response: Success</strong></p>
 <pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"response"</span>: <span class="hljs-string">"init"</span>,
     <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Successfully connected to SelfKey Connect"</span>
 }
 </code></pre>
 <p><strong>Response: Error</strong></p>
 <pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"response"</span>: <span class="hljs-string">"init"</span>,
     <span class="hljs-attr">"error"</span>: <span class="hljs-string">"Cannot connect to SelfKey Connect"</span>
 }
 </code></pre>
@@ -94,16 +126,18 @@ These 3 components work together with the content script used to interact with t
 </ul>
 <p><strong>Request Example</strong></p>
 <pre><code class="hljs css languages- json">{
-    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"ping"</span>
+    <span class="hljs-attr">"request"</span>: <span class="hljs-string">"init"</span>
 }
 </code></pre>
 <p><strong>Response: Success</strong></p>
 <pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"response"</span>: <span class="hljs-string">"init"</span>,
     <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Successfully connected to Background Script"</span>
 }
 </code></pre>
 <p><strong>Response: Error</strong></p>
 <pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"response"</span>: <span class="hljs-string">"init"</span>,
     <span class="hljs-attr">"error"</span>: <span class="hljs-string">"SelfKey Connect Internal Error"</span>
 }
 </code></pre>
@@ -117,16 +151,18 @@ These 3 components work together with the content script used to interact with t
 </ul>
 <p><strong>Request Example</strong></p>
 <pre><code class="hljs css languages- json">{
-    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"ping"</span>
+    <span class="hljs-attr">"request"</span>: <span class="hljs-string">"init"</span>
 }
 </code></pre>
 <p><strong>Response: Success</strong></p>
 <pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"response"</span>: <span class="hljs-string">"init"</span>,
     <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Successfully connected to SelfKey Identity Wallet"</span>
 }
 </code></pre>
 <p><strong>Response: Error</strong></p>
 <pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"response"</span>: <span class="hljs-string">"init"</span>,
     <span class="hljs-attr">"error"</span>: <span class="hljs-string">"Error connecting to SelfKey Identity Wallet"</span>
 }
 </code></pre>
@@ -140,11 +176,12 @@ These 3 components work together with the content script used to interact with t
 </ul>
 <p><strong>Request Example</strong></p>
 <pre><code class="hljs css languages- json">{
-    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"ping"</span>
+    <span class="hljs-attr">"request"</span>: <span class="hljs-string">"init"</span>
 }
 </code></pre>
 <p><strong>Response: Success</strong></p>
 <pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"response"</span>: <span class="hljs-string">"init"</span>,
     <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Successfully connected to LWS API Implementation"</span>
 }
 </code></pre>
@@ -153,9 +190,8 @@ These 3 components work together with the content script used to interact with t
     <span class="hljs-attr">"error"</span>: <span class="hljs-string">"Error connecting to Integration Server"</span>
 }
 </code></pre>
-<h1><a class="anchor" aria-hidden="true" id="authentication-flow"></a><a href="#authentication-flow" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Authentication Flow</h1>
-<p>After the preflight checks are successful and all components are installed, running and communicating successfully, the actual authentication flow can begin.</p>
 <h2><a class="anchor" aria-hidden="true" id="2-client-authentication-request"></a><a href="#2-client-authentication-request" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2: Client Authentication Request</h2>
+<p>After the preflight checks are successful and all components are installed, running and communicating successfully, the actual authentication flow can begin.</p>
 <h3><a class="anchor" aria-hidden="true" id="2a-auth-request"></a><a href="#2a-auth-request" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.a AUTH_REQUEST</h3>
 <ul>
 <li><strong>Source:</strong> Client Implementation</li>
@@ -166,17 +202,19 @@ These 3 components work together with the content script used to interact with t
 </ul>
 <p><strong>Request Example</strong></p>
 <pre><code class="hljs css languages- json">{
-    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"auth"</span>
+    <span class="hljs-attr">"request"</span>: <span class="hljs-string">"auth"</span>
 }
 </code></pre>
 <p><strong>Response: Success</strong></p>
 <pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"response"</span>: <span class="hljs-string">"auth"</span>,
     <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Authentication Successful"</span>,
     <span class="hljs-attr">"redirectUrl"</span>: <span class="hljs-string">"/success.html"</span>
 }
 </code></pre>
 <p><strong>Response: Error</strong></p>
 <pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"response"</span>: <span class="hljs-string">"auth"</span>,
     <span class="hljs-attr">"error"</span>: <span class="hljs-string">"Authentication Failed"</span>
 }
 </code></pre>
@@ -191,11 +229,12 @@ These 3 components work together with the content script used to interact with t
 </ul>
 <p><strong>Request Example</strong></p>
 <pre><code class="hljs css languages- json">{
-    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"getWallets"</span>
+    <span class="hljs-attr">"request"</span>: <span class="hljs-string">"wallets"</span>
 }
 </code></pre>
 <p><strong>Response: Success</strong></p>
 <pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"response"</span>: <span class="hljs-string">"wallets"</span>,
     <span class="hljs-attr">"wallets"</span>: [
         {
             <span class="hljs-attr">"id"</span>: <span class="hljs-string">"1"</span>,
@@ -210,6 +249,7 @@ These 3 components work together with the content script used to interact with t
 </code></pre>
 <p><strong>Response: Error</strong></p>
 <pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"response"</span>: <span class="hljs-string">"wallets"</span>,
     <span class="hljs-attr">"error"</span>: <span class="hljs-string">"No Wallets Found"</span>
 }
 </code></pre>
@@ -223,11 +263,12 @@ These 3 components work together with the content script used to interact with t
 </ul>
 <p><strong>Request Example</strong></p>
 <pre><code class="hljs css languages- json">{
-    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"getWallets"</span>
+    <span class="hljs-attr">"request"</span>: <span class="hljs-string">"wallets"</span>
 }
 </code></pre>
 <p><strong>Response: Success</strong></p>
 <pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"response"</span>: <span class="hljs-string">"wallets"</span>,
     <span class="hljs-attr">"wallets"</span>: [
         {
             <span class="hljs-attr">"id"</span>: <span class="hljs-string">"1"</span>,
@@ -242,6 +283,7 @@ These 3 components work together with the content script used to interact with t
 </code></pre>
 <p><strong>Response: Error</strong></p>
 <pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"response"</span>: <span class="hljs-string">"wallets"</span>,
     <span class="hljs-attr">"error"</span>: <span class="hljs-string">"No Wallets Found"</span>
 }
 </code></pre>
@@ -256,17 +298,21 @@ These 3 components work together with the content script used to interact with t
 </ul>
 <p><strong>Request Example</strong></p>
 <pre><code class="hljs css languages- json">{
-    <span class="hljs-attr">"wallet"</span>: <span class="hljs-string">"0xabcd1234"</span>,
+    <span class="hljs-attr">"request"</span>: <span class="hljs-string">"unlock"</span>,
+    <span class="hljs-attr">"address"</span>: <span class="hljs-string">"0xabcd1234"</span>,
     <span class="hljs-attr">"password"</span>: <span class="hljs-string">"pass1234"</span>
 }
 </code></pre>
 <p><strong>Response: Success</strong></p>
 <pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"response"</span>: <span class="hljs-string">"unlock"</span>,
+    <span class="hljs-attr">"address"</span>: <span class="hljs-string">"0xabcd1234"</span>,
     <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Wallet Unlocked Successfully"</span>
 }
 </code></pre>
 <p><strong>Response: Error</strong></p>
 <pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"response"</span>: <span class="hljs-string">"unlock"</span>,
     <span class="hljs-attr">"error"</span>: <span class="hljs-string">"Invalid Credentials"</span>
 }
 </code></pre>
@@ -280,17 +326,20 @@ These 3 components work together with the content script used to interact with t
 </ul>
 <p><strong>Request Example</strong></p>
 <pre><code class="hljs css languages- json">{
-    <span class="hljs-attr">"wallet"</span>: <span class="hljs-string">"0xabcd1234"</span>,
+    <span class="hljs-attr">"request"</span>: <span class="hljs-string">"unlock"</span>,
+    <span class="hljs-attr">"address"</span>: <span class="hljs-string">"0xabcd1234"</span>,
     <span class="hljs-attr">"password"</span>: <span class="hljs-string">"pass1234"</span>
 }
 </code></pre>
 <p><strong>Response: Success</strong></p>
 <pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"response"</span>: <span class="hljs-string">"unlock"</span>,
     <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Wallet Unlocked Successfully"</span>
 }
 </code></pre>
 <p><strong>Response: Error</strong></p>
 <pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"response"</span>: <span class="hljs-string">"unlock"</span>,
     <span class="hljs-attr">"error"</span>: <span class="hljs-string">"Invalid Credentials"</span>
 }
 </code></pre>
@@ -305,6 +354,7 @@ These 3 components work together with the content script used to interact with t
 </ul>
 <p><strong>Request Example</strong></p>
 <pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"request"</span>: <span class="hljs-string">"attributes"</span>,
     <span class="hljs-attr">"required"</span>: [
         {
             <span class="hljs-attr">"name"</span>: <span class="hljs-string">"First Name"</span>,
@@ -331,6 +381,7 @@ These 3 components work together with the content script used to interact with t
 </code></pre>
 <p><strong>Response: Success</strong></p>
 <pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"response"</span>: <span class="hljs-string">"attributes"</span>,
     <span class="hljs-attr">"attributes"</span>: [
         {
             <span class="hljs-attr">"key"</span>: <span class="hljs-string">"first_name"</span>,
@@ -353,6 +404,7 @@ These 3 components work together with the content script used to interact with t
 </code></pre>
 <p><strong>Response: Error</strong></p>
 <pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"response"</span>: <span class="hljs-string">"attributes"</span>,
     <span class="hljs-attr">"error"</span>: <span class="hljs-string">"Attrbute Missing"</span>
 }
 </code></pre>
@@ -366,6 +418,7 @@ These 3 components work together with the content script used to interact with t
 </ul>
 <p><strong>Request Example</strong></p>
 <pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"request"</span>: <span class="hljs-string">"attributes"</span>,
     <span class="hljs-attr">"required"</span>: [
         {
             <span class="hljs-attr">"name"</span>: <span class="hljs-string">"First Name"</span>,
@@ -392,6 +445,7 @@ These 3 components work together with the content script used to interact with t
 </code></pre>
 <p><strong>Response: Success</strong></p>
 <pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"response"</span>: <span class="hljs-string">"attributes"</span>,
     <span class="hljs-attr">"attributes"</span>: [
         {
             <span class="hljs-attr">"key"</span>: <span class="hljs-string">"first_name"</span>,
@@ -414,6 +468,7 @@ These 3 components work together with the content script used to interact with t
 </code></pre>
 <p><strong>Response: Error</strong></p>
 <pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"response"</span>: <span class="hljs-string">"attributes"</span>,
     <span class="hljs-attr">"error"</span>: <span class="hljs-string">"Attrbute Missing"</span>
 }
 </code></pre>
@@ -443,12 +498,14 @@ These 3 components work together with the content script used to interact with t
 </code></pre>
 <p><strong>Response: Success</strong></p>
 <pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"response"</span>: <span class="hljs-string">"signature"</span>,
     <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Authentication Successful"</span>,
     <span class="hljs-attr">"redirectUrl"</span>: <span class="hljs-string">"/success.html"</span>
 }
 </code></pre>
 <p><strong>Response: Error</strong></p>
 <pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"response"</span>: <span class="hljs-string">"signature"</span>,
     <span class="hljs-attr">"error"</span>: <span class="hljs-string">"Authentication Failed"</span>
 }
 </code></pre>
@@ -477,12 +534,14 @@ These 3 components work together with the content script used to interact with t
 </code></pre>
 <p><strong>Response: Success</strong></p>
 <pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"response"</span>: <span class="hljs-string">"signature"</span>,
     <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Authentication Successful"</span>,
     <span class="hljs-attr">"redirectUrl"</span>: <span class="hljs-string">"/success.html"</span>
 }
 </code></pre>
 <p><strong>Response: Error</strong></p>
 <pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"response"</span>: <span class="hljs-string">"signature"</span>,
     <span class="hljs-attr">"error"</span>: <span class="hljs-string">"Authentication Failed"</span>
 }
 </code></pre>

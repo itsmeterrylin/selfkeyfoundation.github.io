@@ -24,12 +24,13 @@
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">API Docs</h1></header><article><div><span><h1><a class="anchor" aria-hidden="true" id="preflight"></a><a href="#preflight" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Preflight</h1>
 <p>This part of the system is running before in the background before any user interaction takes place.  The purpose is to verify successful connections between the Integrating Client Implementation, SelfKey Connect Browser Extension, SelfKey Identity Wallet and the Integrating LWS API Implementation.  If all connections are working then when the user clicks the Login with SelfKey button in the browser, the authentication process with begin successfully, otherwise an error message with instructions will be displayed to the user explaining which component is not working and instructions on how to download and run the missing component (Browser Extension or Wallet App) This will also handle any errors from the 3rd party implementation having connection issues, for example if the API Implementation is down.</p>
 <h2><a class="anchor" aria-hidden="true" id="1-preflight-connect-checks"></a><a href="#1-preflight-connect-checks" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1: Preflight Connect Checks</h2>
-<h3><a class="anchor" aria-hidden="true" id="1a-lws-init"></a><a href="#1a-lws-init" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1.a: LWS_INIT</h3>
+<h3><a class="anchor" aria-hidden="true" id="1a-lws-init"></a><a href="#1a-lws-init" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1.a LWS_INIT</h3>
 <ul>
 <li><strong>Source:</strong> Client Implementation</li>
 <li><strong>Target:</strong> SK Connect Content Script</li>
-<li><strong>Endpoint:</strong>  <code>/LWS_INIT</code></li>
-<li><strong>Protocol:</strong>  Chrome Messaging</li>
+<li><strong>Endpoint:</strong> <code>/LWS_INIT</code></li>
+<li><strong>Protocol:</strong> Chrome Messaging</li>
+<li><strong>Description:</strong> Initial test connection between the client implementation in the browser DOM and the SelfKey Connect Browser extension via the injected content script.  If the client cannot connect with the browser extension, and error message will be returned which will indicate to the client implementation to display user instructions regarding the installing and running the required components. (SelfKey Connect Browser Extension and SelfKey Identity Wallet)</li>
 </ul>
 <p><strong>Request Example</strong></p>
 <pre><code class="hljs css languages- json">{
@@ -46,12 +47,13 @@
     <span class="hljs-attr">"error"</span>: <span class="hljs-string">"Cannot connect to SelfKey Connect"</span>
 }
 </code></pre>
-<h3><a class="anchor" aria-hidden="true" id="1b-connect"></a><a href="#1b-connect" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1.b: CONNECT</h3>
+<h3><a class="anchor" aria-hidden="true" id="1b-connect"></a><a href="#1b-connect" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1.b CONNECT</h3>
 <ul>
 <li><strong>Source:</strong> SK Connect Content Script</li>
 <li><strong>Target:</strong> SK Connect Background Script</li>
-<li><strong>Endpoint:</strong>  <code>/CONNECT</code></li>
-<li><strong>Protocol:</strong>  Chrome Messaging</li>
+<li><strong>Endpoint:</strong> <code>/CONNECT</code></li>
+<li><strong>Protocol:</strong> Chrome Messaging</li>
+<li><strong>Description:</strong> Passes the init message internally within the SelfKey Connect Browser Extension from the content script to the background script in preparation for testing the connection with the SelfKey Identity Wallet.</li>
 </ul>
 <p><strong>Request Example</strong></p>
 <pre><code class="hljs css languages- json">{
@@ -72,8 +74,9 @@
 <ul>
 <li><strong>Source:</strong> SK Connect Background Script</li>
 <li><strong>Target:</strong> SK Identity Wallet</li>
-<li><strong>Endpoint:</strong>  <code>/CONNECT</code></li>
-<li><strong>Protocol:</strong>  Websocket Connection</li>
+<li><strong>Endpoint:</strong> <code>/CONNECT</code></li>
+<li><strong>Protocol:</strong> Websocket Connection</li>
+<li><strong>Description:</strong> Tests the connection between the SelfKey Connect Browser Extension and the SelfKey Identity Wallet via a secure WebSocket Connection.  If the connection fails an error message will be returned that will allow the Browser Extension UI to dispal instructions regarding how to install and run the SelfKey Identity Wallet.</li>
 </ul>
 <p><strong>Request Example</strong></p>
 <pre><code class="hljs css languages- json">{
@@ -94,8 +97,9 @@
 <ul>
 <li><strong>Source:</strong> SK Identity Wallet</li>
 <li><strong>Target:</strong> Server Implementation</li>
-<li><strong>Endpoint:</strong>  <code>/CONNECT</code></li>
-<li><strong>Protocol:</strong>  HTTP Request</li>
+<li><strong>Endpoint:</strong> <code>/CONNECT</code></li>
+<li><strong>Protocol:</strong> HTTP Request</li>
+<li><strong>Description:</strong> Tests the connection between the SelfKey Identity Wallet and the Server Implementation via HTTP request.  If the connection fails an error will be returned to disable any attempt to begin the authentication process as it cannot work without access to a server implementation.</li>
 </ul>
 <p><strong>Request Example</strong></p>
 <pre><code class="hljs css languages- json">{
@@ -119,8 +123,9 @@
 <ul>
 <li><strong>Source:</strong> Client Implementation</li>
 <li><strong>Target:</strong> SK Connect Content Script</li>
-<li><strong>Endpoint:</strong>  <code>/AUTH_REQUEST</code></li>
-<li><strong>Protocol:</strong>  Chrome Messaging</li>
+<li><strong>Endpoint:</strong> <code>/AUTH_REQUEST</code></li>
+<li><strong>Protocol:</strong> Chrome Messaging</li>
+<li><strong>Description:</strong> Begins the actual authentication process for Login with SelfKey by sending a message to the SelfKey Connect Browser Extension.  If the complete authentication process is successful, a redirect link will be returned and the users browser tab will be updated to reflect the redirect url.  The redirect URL is fully customizable from within the server implementation.</li>
 </ul>
 <p><strong>Request Example</strong></p>
 <pre><code class="hljs css languages- json">{
@@ -143,8 +148,9 @@
 <ul>
 <li><strong>Source:</strong> SK Connect iFrame</li>
 <li><strong>Target:</strong> SK Connect Background Script</li>
-<li><strong>Endpoint:</strong>  <code>/WALLETS_REQUEST</code></li>
-<li><strong>Protocol:</strong>  Chrome Messaging</li>
+<li><strong>Endpoint:</strong> <code>/WALLETS_REQUEST</code></li>
+<li><strong>Protocol:</strong> Chrome Messaging</li>
+<li><strong>Description:</strong> A message sent from the SK Connect iFrame to the Background Script which will be forwarded as a request to get information about available wallets associated with the users SelfKey Identity Wallet.  A successful request will return an array of available wallets.</li>
 </ul>
 <p><strong>Request Example</strong></p>
 <pre><code class="hljs css languages- json">{
@@ -174,8 +180,9 @@
 <ul>
 <li><strong>Source:</strong> SK Connect Background Script</li>
 <li><strong>Target:</strong> SK Identity Wallet</li>
-<li><strong>Endpoint:</strong>  <code>/WALLETS_REQUEST</code></li>
-<li><strong>Protocol:</strong>  Websocket Connection</li>
+<li><strong>Endpoint:</strong> <code>/WALLETS_REQUEST</code></li>
+<li><strong>Protocol:</strong> Websocket Connection</li>
+<li><strong>Description:</strong> A request for information about available wallets from the SelfKey Connect Browser Extension to the SelfKey Identity Wallet.  The request message is sent via Websocket Connectino and the wallet will return information about available wallets and also if a wallet is currently unlocked already.</li>
 </ul>
 <p><strong>Request Example</strong></p>
 <pre><code class="hljs css languages- json">{
@@ -206,8 +213,9 @@
 <ul>
 <li><strong>Source:</strong> SK Connect iFrame</li>
 <li><strong>Target:</strong> SK Connect Background Script</li>
-<li><strong>Endpoint:</strong>  <code>/UNLOCK</code></li>
-<li><strong>Protocol:</strong>  Chrome Messaging</li>
+<li><strong>Endpoint:</strong> <code>/UNLOCK</code></li>
+<li><strong>Protocol:</strong> Chrome Messaging</li>
+<li><strong>Description:</strong> Submits wallet address and password data from the SK Connect iFrame to the Background Script to be passed on to the SelfKey Identity Wallet.</li>
 </ul>
 <p><strong>Request Example</strong></p>
 <pre><code class="hljs css languages- json">{
@@ -229,8 +237,9 @@
 <ul>
 <li><strong>Source:</strong> SK Connect Background Script</li>
 <li><strong>Target:</strong> SK Identity Wallet</li>
-<li><strong>Endpoint:</strong>  <code>/UNLOCK</code></li>
-<li><strong>Protocol:</strong>  Websockets Connection</li>
+<li><strong>Endpoint:</strong> <code>/UNLOCK</code></li>
+<li><strong>Protocol:</strong> Websockets Connection</li>
+<li><strong>Description:</strong> Submits wallet address and password data from the SK Connect Background Script to the SelfKey Identity Wallet to unlock a specified wallet.  If the correct crendentials are passed on, the wallet will be unlocked and the private key will be available to create the signature required for authentication.</li>
 </ul>
 <p><strong>Request Example</strong></p>
 <pre><code class="hljs css languages- json">{
@@ -253,8 +262,9 @@
 <ul>
 <li><strong>Source:</strong> SK Connect iFrame</li>
 <li><strong>Target:</strong> SK Connect Background Script</li>
-<li><strong>Endpoint:</strong>  <code>/ATTR_REQ</code></li>
-<li><strong>Protocol:</strong>  Chrome Messaging</li>
+<li><strong>Endpoint:</strong> <code>/ATTR_REQ</code></li>
+<li><strong>Protocol:</strong> Chrome Messaging</li>
+<li><strong>Description:</strong> Submits an internal request from the SelfKey Connect iFrame to the Background Script for id attribute data and documents.  The request will be passed on to the SelfKey Identity Wallet and if successful will return information data points.</li>
 </ul>
 <p><strong>Request Example</strong></p>
 <pre><code class="hljs css languages- json">{
@@ -313,8 +323,9 @@
 <ul>
 <li><strong>Source:</strong> SK Connect Background Script</li>
 <li><strong>Target:</strong> SK Identity Wallet</li>
-<li><strong>Endpoint:</strong>  <code>/ATTR_REQ</code></li>
-<li><strong>Protocol:</strong>  Websockets Connection</li>
+<li><strong>Endpoint:</strong> <code>/ATTR_REQ</code></li>
+<li><strong>Protocol:</strong> Websockets Connection</li>
+<li><strong>Description:</strong> Sends a request from the SK Connect Browser Extension to the SelfKey Identity Wallet for identity data and document information.  A successful request will return an array of attribute details to be displayed in the UI to confirm submission of data before the server authentication process.</li>
 </ul>
 <p><strong>Request Example</strong></p>
 <pre><code class="hljs css languages- json">{
@@ -374,30 +385,22 @@
 <ul>
 <li><strong>Source:</strong> SK Connect iFrame</li>
 <li><strong>Target:</strong> SK Connect Background Script</li>
-<li><strong>Endpoint:</strong>  <code>/AUTH_REQUEST</code></li>
-<li><strong>Protocol:</strong>  Chrome Messaging</li>
+<li><strong>Endpoint:</strong> <code>/AUTH_REQUEST</code></li>
+<li><strong>Protocol:</strong> Chrome Messaging</li>
+<li><strong>Description:</strong> Submits an internal message from the SK Connect iFrame to the Background Script with the information needed for the request to the SelfKey Identity Wallet.</li>
 </ul>
 <p><strong>Request Example</strong></p>
 <pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"request"</span>: <span class="hljs-string">"signature"</span>,
     <span class="hljs-attr">"wallet"</span>: <span class="hljs-string">"0x1234abcd"</span>,
-    <span class="hljs-attr">"signature"</span>: <span class="hljs-string">"{\"r\":{\"type\":\"Buffer\",\"data\":[215,252,52,209,99,115,65,20,176,235,54,88,127,105,159,87,211,198,96,96,196,194,207,121,162,11,40,127,82,95,131,13]},\"s\":{\"type\":\"Buffer\",\"data\":[80,25,172,33,158,87,250,185,205,28,213,156,102,150,182,82,245,78,175,18,35,87,16,123,160,10,197,42,163,156,2,58]},\"v\":28}"</span>,
     <span class="hljs-attr">"attributes"</span>: [
-        {
-            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"first_name"</span>,
-            <span class="hljs-attr">"value"</span>: <span class="hljs-string">"Bobby"</span>
-        },
-        {
-            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"last_name"</span>,
-            <span class="hljs-attr">"value"</span>: <span class="hljs-string">"Lee"</span>
-        },
-        {
-            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"email_address"</span>,
-            <span class="hljs-attr">"value"</span>: <span class="hljs-string">"bobby@bitcoin.com"</span>
-        },
-        {
-            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"phone_number"</span>,
-            <span class="hljs-attr">"value"</span>: <span class="hljs-string">"18001234567"</span>
-        }
+        <span class="hljs-string">"first_name"</span>,
+        <span class="hljs-string">"last_name"</span>,
+        <span class="hljs-string">"email_address"</span>,
+        <span class="hljs-string">"phone_number"</span>
+    ],
+    <span class="hljs-attr">"documents"</span>: [
+        <span class="hljs-string">"passport"</span>
     ]
 }
 </code></pre>
@@ -416,30 +419,22 @@
 <ul>
 <li><strong>Source:</strong> SK Connect Background Script</li>
 <li><strong>Target:</strong> SK Identity Wallet</li>
-<li><strong>Endpoint:</strong>  <code>/AUTH_REQUEST</code></li>
-<li><strong>Protocol:</strong>  Websockets Connection</li>
+<li><strong>Endpoint:</strong> <code>/AUTH_REQUEST</code></li>
+<li><strong>Protocol:</strong> Websockets Connection</li>
+<li><strong>Description:</strong> Submits a request for the creation of a signature and the submission of data and documents from the SK Connect Browser Extension to the SelfKey Identity Wallet.  A successful request will trigger a request to the server for the final step in the authentication process.</li>
 </ul>
 <p><strong>Request Example</strong></p>
 <pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"request"</span>: <span class="hljs-string">"signature"</span>,
     <span class="hljs-attr">"wallet"</span>: <span class="hljs-string">"0x1234abcd"</span>,
-    <span class="hljs-attr">"signature"</span>: <span class="hljs-string">"{\"r\":{\"type\":\"Buffer\",\"data\":[215,252,52,209,99,115,65,20,176,235,54,88,127,105,159,87,211,198,96,96,196,194,207,121,162,11,40,127,82,95,131,13]},\"s\":{\"type\":\"Buffer\",\"data\":[80,25,172,33,158,87,250,185,205,28,213,156,102,150,182,82,245,78,175,18,35,87,16,123,160,10,197,42,163,156,2,58]},\"v\":28}"</span>,
     <span class="hljs-attr">"attributes"</span>: [
-        {
-            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"first_name"</span>,
-            <span class="hljs-attr">"value"</span>: <span class="hljs-string">"Bobby"</span>
-        },
-        {
-            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"last_name"</span>,
-            <span class="hljs-attr">"value"</span>: <span class="hljs-string">"Lee"</span>
-        },
-        {
-            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"email_address"</span>,
-            <span class="hljs-attr">"value"</span>: <span class="hljs-string">"bobby@bitcoin.com"</span>
-        },
-        {
-            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"phone_number"</span>,
-            <span class="hljs-attr">"value"</span>: <span class="hljs-string">"18001234567"</span>
-        }
+        <span class="hljs-string">"first_name"</span>,
+        <span class="hljs-string">"last_name"</span>,
+        <span class="hljs-string">"email_address"</span>,
+        <span class="hljs-string">"phone_number"</span>
+    ],
+    <span class="hljs-attr">"documents"</span>: [
+        <span class="hljs-string">"passport"</span>
     ]
 }
 </code></pre>
@@ -458,8 +453,9 @@
 <ul>
 <li><strong>Source:</strong> SK Identity Wallet</li>
 <li><strong>Target:</strong> Server Implementation</li>
-<li><strong>Endpoint:</strong>  <code>/LWS_REQUEST</code></li>
-<li><strong>Protocol:</strong>  HTTP Request</li>
+<li><strong>Endpoint:</strong> <code>/LWS_REQUEST</code></li>
+<li><strong>Protocol:</strong> HTTP Request</li>
+<li><strong>Description:</strong> Submits an HTTP Request from the SelfKey Identity Wallet to the Server Implementation with a signature, data and documents for authentication.  A successful request will return a redirectUrl that will update the browser and send the user to a URL based on the server implementation configuration.</li>
 </ul>
 <p><strong>Request Example</strong></p>
 <pre><code class="hljs css languages- json">{
@@ -482,6 +478,13 @@
             <span class="hljs-attr">"key"</span>: <span class="hljs-string">"phone_number"</span>,
             <span class="hljs-attr">"value"</span>: <span class="hljs-string">"18001234567"</span>
         }
+    ],
+    <span class="hljs-attr">"documents"</span>: [
+        {
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"passport"</span>,
+            <span class="hljs-attr">"mime-type"</span>: <span class="hljs-string">"image/jpg"</span>,
+            <span class="hljs-attr">"file"</span>: <span class="hljs-string">"path/to/file.jpg"</span>
+        }
     ]
 }
 </code></pre>
@@ -496,4 +499,4 @@
     <span class="hljs-attr">"error"</span>: <span class="hljs-string">"Authentication Failed"</span>
 }
 </code></pre>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/login-with-selfkey/lws-flow.html">← Technical Flow Diagram</a><a class="docs-next button" href="/docs/login-with-selfkey/lws-auth.html">Authentication Process →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#1-preflight-connect-checks">1: Preflight Connect Checks</a><ul class="toc-headings"><li><a href="#1a-lws-init">1.a: LWS_INIT</a></li><li><a href="#1b-connect">1.b: CONNECT</a></li><li><a href="#1c-connect">1.c CONNECT</a></li><li><a href="#1d-connect">1.d CONNECT</a></li></ul></li><li><a href="#2-client-authentication-request">2: Client Authentication Request</a><ul class="toc-headings"><li><a href="#2a-auth-request">2.a AUTH_REQUEST</a></li></ul></li><li><a href="#3-available-wallets">3: Available Wallets</a><ul class="toc-headings"><li><a href="#3a-wallets-request">3.a WALLETS_REQUEST</a></li><li><a href="#3b-wallets-request">3.b WALLETS_REQUEST</a></li></ul></li><li><a href="#4-json-keystore-unlock">4: JSON Keystore Unlock</a><ul class="toc-headings"><li><a href="#4a-unlock">4.a UNLOCK</a></li><li><a href="#4b-unlock">4.b UNLOCK</a></li></ul></li><li><a href="#5-request-attributes-and-documents">5: Request Attributes and Documents</a><ul class="toc-headings"><li><a href="#5a-attr-req">5.a ATTR_REQ</a></li><li><a href="#5b-attr-req">5.b ATTR_REQ</a></li></ul></li><li><a href="#6-server-authentication-request">6: Server Authentication Request</a><ul class="toc-headings"><li><a href="#6a-auth-req">6.a AUTH_REQ</a></li><li><a href="#6b-auth-req">6.b AUTH_REQ</a></li><li><a href="#6c-lws-request">6.c LWS_REQUEST</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><a href="/" class="nav-home"><img src="/img/logo.png" alt="Developers" height="60"/></a><section class="sitemap"><div><h5>Docs</h5><a href="/docs/en/getting-started/selfkey-intro.html">Getting Started</a><a href="/docs/en/marketplace/marketplace-intro.html">Marketplace Integration</a><a href="/docs/en/login-with-selfkey/lws-intro.html">Login with Selfkey</a><a href="/docs/en/additional-projects/json-schema-intro.html">Additional Projects</a></div><div><h5>Resources</h5><a href="/en/resources/overview.html">View All Resources</a><a href="/en/resources/lws-nodejs.html">Login with SelfKey NodeJS SDK</a><a href="https://twitter.com/SelfKeyDevelopers" target="_blank" rel="noreferrer noopener">Selfkey Developer Twitter</a></div><div><h5>More</h5><a href="/blog">SelfKey Developer Blog</a><a href="https://github.com/SelfKeyFoundation">SelfKey Foundation GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/SelfKeyFoundation/Identity-Wallet" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2018 SelfKey Foundation</section></footer></div><script src="http://localhost:35729/livereload.js"></script></body></html>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/login-with-selfkey/lws-flow.html">← Technical Flow Diagram</a><a class="docs-next button" href="/docs/login-with-selfkey/lws-auth.html">Authentication Process →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#1-preflight-connect-checks">1: Preflight Connect Checks</a><ul class="toc-headings"><li><a href="#1a-lws-init">1.a LWS_INIT</a></li><li><a href="#1b-connect">1.b CONNECT</a></li><li><a href="#1c-connect">1.c CONNECT</a></li><li><a href="#1d-connect">1.d CONNECT</a></li></ul></li><li><a href="#2-client-authentication-request">2: Client Authentication Request</a><ul class="toc-headings"><li><a href="#2a-auth-request">2.a AUTH_REQUEST</a></li></ul></li><li><a href="#3-available-wallets">3: Available Wallets</a><ul class="toc-headings"><li><a href="#3a-wallets-request">3.a WALLETS_REQUEST</a></li><li><a href="#3b-wallets-request">3.b WALLETS_REQUEST</a></li></ul></li><li><a href="#4-json-keystore-unlock">4: JSON Keystore Unlock</a><ul class="toc-headings"><li><a href="#4a-unlock">4.a UNLOCK</a></li><li><a href="#4b-unlock">4.b UNLOCK</a></li></ul></li><li><a href="#5-request-attributes-and-documents">5: Request Attributes and Documents</a><ul class="toc-headings"><li><a href="#5a-attr-req">5.a ATTR_REQ</a></li><li><a href="#5b-attr-req">5.b ATTR_REQ</a></li></ul></li><li><a href="#6-server-authentication-request">6: Server Authentication Request</a><ul class="toc-headings"><li><a href="#6a-auth-req">6.a AUTH_REQ</a></li><li><a href="#6b-auth-req">6.b AUTH_REQ</a></li><li><a href="#6c-lws-request">6.c LWS_REQUEST</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><a href="/" class="nav-home"><img src="/img/logo.png" alt="Developers" height="60"/></a><section class="sitemap"><div><h5>Docs</h5><a href="/docs/en/getting-started/selfkey-intro.html">Getting Started</a><a href="/docs/en/marketplace/marketplace-intro.html">Marketplace Integration</a><a href="/docs/en/login-with-selfkey/lws-intro.html">Login with Selfkey</a><a href="/docs/en/additional-projects/json-schema-intro.html">Additional Projects</a></div><div><h5>Resources</h5><a href="/en/resources/overview.html">View All Resources</a><a href="/en/resources/lws-nodejs.html">Login with SelfKey NodeJS SDK</a><a href="https://twitter.com/SelfKeyDevelopers" target="_blank" rel="noreferrer noopener">Selfkey Developer Twitter</a></div><div><h5>More</h5><a href="/blog">SelfKey Developer Blog</a><a href="https://github.com/SelfKeyFoundation">SelfKey Foundation GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/SelfKeyFoundation/Identity-Wallet" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2018 SelfKey Foundation</section></footer></div><script src="http://localhost:35729/livereload.js"></script></body></html>

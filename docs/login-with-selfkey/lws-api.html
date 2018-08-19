@@ -1,0 +1,499 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>API Docs · Developers</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="# Preflight"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="API Docs · Developers"/><meta property="og:type" content="website"/><meta property="og:url" content="https://selfkeyfoundation.github.io/index.html"/><meta property="og:description" content="# Preflight"/><meta property="og:image" content="https://selfkeyfoundation.github.io/img/logo.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://selfkeyfoundation.github.io/img/logo.png"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/obsidian.min.css"/><link rel="alternate" type="application/atom+xml" href="https://selfkeyfoundation.github.io/blog/atom.xml" title="Developers Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://selfkeyfoundation.github.io/blog/feed.xml" title="Developers Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo.png" alt="Developers"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/getting-started/selfkey-intro.html" target="_self">Docs</a></li><li class=""><a href="/docs/resources/overview.html" target="_self">Resources</a></li><li class=""><a href="/en/help.html" target="_self">Help</a></li><li class=""><a href="/blog" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Login with SelfKey</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul><li class="navListItem"><a class="navItem" href="/docs/getting-started/selfkey-intro.html">About SelfKey</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started/key-token-intro.html">KEY Token Contract</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started/idw-intro.html">SelfKey Identity Wallet</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started/skc-intro.html">SelfKey Connect (Browser Ext.)</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Marketplace Integrations</h3><ul><li class="navListItem"><a class="navItem" href="/docs/marketplace/marketplace-intro.html">About the Marketplace</a></li><li class="navListItem"><a class="navItem" href="/docs/marketplace/marketplace-api.html">Marketplace API</a></li><li class="navListItem"><a class="navItem" href="/docs/marketplace/marketplace-exchanges.html">Exchanges</a></li><li class="navListItem"><a class="navItem" href="/docs/marketplace/marketplace-incorporations.html">Incorporations</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Login with SelfKey</h3><ul><li class="navListItem"><a class="navItem" href="/docs/login-with-selfkey/lws-intro.html">About Login with SelfKey</a></li><li class="navListItem"><a class="navItem" href="/docs/login-with-selfkey/lws-flow.html">Technical Flow Diagram</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/login-with-selfkey/lws-api.html">API Docs</a></li><li class="navListItem"><a class="navItem" href="/docs/login-with-selfkey/lws-auth.html">Authentication Process</a></li><li class="navListItem"><a class="navItem" href="/docs/login-with-selfkey/lws-data.html">Data and Document Transfer</a></li><li class="navListItem"><a class="navItem" href="/docs/login-with-selfkey/lws-client.html">Client Configuration</a></li><li class="navListItem"><a class="navItem" href="/docs/login-with-selfkey/lws-server.html">Server Implementation</a></li><li class="navListItem"><a class="navItem" href="/docs/login-with-selfkey/lws-ux.html">User Experience</a></li><li class="navListItem"><a class="navItem" href="/docs/login-with-selfkey/lws-sandbox.html">Development Sandbox</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Additional Projects</h3><ul><li class="navListItem"><a class="navItem" href="/docs/additional-projects/json-schema-intro.html">SelfKey JSON Schema</a></li><li class="navListItem"><a class="navItem" href="/docs/additional-projects/staking-intro.html">Staking KEY</a></li><li class="navListItem"><a class="navItem" href="/docs/additional-projects/did-intro.html">Decentralized Identifiers (DID)</a></li><li class="navListItem"><a class="navItem" href="/docs/additional-projects/verifiable-creds-intro.html">Verifiable Credentials</a></li></ul></div></div></section></div><script>
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">API Docs</h1></header><article><div><span><h1><a class="anchor" aria-hidden="true" id="preflight"></a><a href="#preflight" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Preflight</h1>
+<p>This part of the system is running before in the background before any user interaction takes place.  The purpose is to verify successful connections between the Integrating Client Implementation, SelfKey Connect Browser Extension, SelfKey Identity Wallet and the Integrating LWS API Implementation.  If all connections are working then when the user clicks the Login with SelfKey button in the browser, the authentication process with begin successfully, otherwise an error message with instructions will be displayed to the user explaining which component is not working and instructions on how to download and run the missing component (Browser Extension or Wallet App) This will also handle any errors from the 3rd party implementation having connection issues, for example if the API Implementation is down.</p>
+<h2><a class="anchor" aria-hidden="true" id="1-preflight-connect-checks"></a><a href="#1-preflight-connect-checks" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1: Preflight Connect Checks</h2>
+<h3><a class="anchor" aria-hidden="true" id="1a-lws-init"></a><a href="#1a-lws-init" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1.a: LWS_INIT</h3>
+<ul>
+<li><strong>Source:</strong> Client Implementation</li>
+<li><strong>Target:</strong> SK Connect Content Script</li>
+<li><strong>Endpoint:</strong>  <code>/LWS_INIT</code></li>
+<li><strong>Protocol:</strong>  Chrome Messaging</li>
+</ul>
+<p><strong>Request Example</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"ping"</span>
+}
+</code></pre>
+<p><strong>Response: Success</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Successfully connected to SelfKey Connect"</span>
+}
+</code></pre>
+<p><strong>Response: Error</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"error"</span>: <span class="hljs-string">"Cannot connect to SelfKey Connect"</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="1b-connect"></a><a href="#1b-connect" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1.b: CONNECT</h3>
+<ul>
+<li><strong>Source:</strong> SK Connect Content Script</li>
+<li><strong>Target:</strong> SK Connect Background Script</li>
+<li><strong>Endpoint:</strong>  <code>/CONNECT</code></li>
+<li><strong>Protocol:</strong>  Chrome Messaging</li>
+</ul>
+<p><strong>Request Example</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"ping"</span>
+}
+</code></pre>
+<p><strong>Response: Success</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Successfully connected to Background Script"</span>
+}
+</code></pre>
+<p><strong>Response: Error</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"error"</span>: <span class="hljs-string">"SelfKey Connect Internal Error"</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="1c-connect"></a><a href="#1c-connect" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1.c CONNECT</h3>
+<ul>
+<li><strong>Source:</strong> SK Connect Background Script</li>
+<li><strong>Target:</strong> SK Identity Wallet</li>
+<li><strong>Endpoint:</strong>  <code>/CONNECT</code></li>
+<li><strong>Protocol:</strong>  Websocket Connection</li>
+</ul>
+<p><strong>Request Example</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"ping"</span>
+}
+</code></pre>
+<p><strong>Response: Success</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Successfully connected to SelfKey Identity Wallet"</span>
+}
+</code></pre>
+<p><strong>Response: Error</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"error"</span>: <span class="hljs-string">"Error connecting to SelfKey Identity Wallet"</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="1d-connect"></a><a href="#1d-connect" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1.d CONNECT</h3>
+<ul>
+<li><strong>Source:</strong> SK Identity Wallet</li>
+<li><strong>Target:</strong> Server Implementation</li>
+<li><strong>Endpoint:</strong>  <code>/CONNECT</code></li>
+<li><strong>Protocol:</strong>  HTTP Request</li>
+</ul>
+<p><strong>Request Example</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"ping"</span>
+}
+</code></pre>
+<p><strong>Response: Success</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Successfully connected to LWS API Implementation"</span>
+}
+</code></pre>
+<p><strong>Response: Error</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"error"</span>: <span class="hljs-string">"Error connecting to Integration Server"</span>
+}
+</code></pre>
+<h1><a class="anchor" aria-hidden="true" id="authentication-flow"></a><a href="#authentication-flow" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Authentication Flow</h1>
+<p>After the preflight checks are successful and all components are installed, running and communicating successfully, the actual authentication flow can begin.</p>
+<h2><a class="anchor" aria-hidden="true" id="2-client-authentication-request"></a><a href="#2-client-authentication-request" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2: Client Authentication Request</h2>
+<h3><a class="anchor" aria-hidden="true" id="2a-auth-request"></a><a href="#2a-auth-request" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.a AUTH_REQUEST</h3>
+<ul>
+<li><strong>Source:</strong> Client Implementation</li>
+<li><strong>Target:</strong> SK Connect Content Script</li>
+<li><strong>Endpoint:</strong>  <code>/AUTH_REQUEST</code></li>
+<li><strong>Protocol:</strong>  Chrome Messaging</li>
+</ul>
+<p><strong>Request Example</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"auth"</span>
+}
+</code></pre>
+<p><strong>Response: Success</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Authentication Successful"</span>,
+    <span class="hljs-attr">"redirectUrl"</span>: <span class="hljs-string">"/success.html"</span>
+}
+</code></pre>
+<p><strong>Response: Error</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"error"</span>: <span class="hljs-string">"Authentication Failed"</span>
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="3-available-wallets"></a><a href="#3-available-wallets" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3: Available Wallets</h2>
+<h3><a class="anchor" aria-hidden="true" id="3a-wallets-request"></a><a href="#3a-wallets-request" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3.a WALLETS_REQUEST</h3>
+<ul>
+<li><strong>Source:</strong> SK Connect iFrame</li>
+<li><strong>Target:</strong> SK Connect Background Script</li>
+<li><strong>Endpoint:</strong>  <code>/WALLETS_REQUEST</code></li>
+<li><strong>Protocol:</strong>  Chrome Messaging</li>
+</ul>
+<p><strong>Request Example</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"getWallets"</span>
+}
+</code></pre>
+<p><strong>Response: Success</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"wallets"</span>: [
+        {
+            <span class="hljs-attr">"id"</span>: <span class="hljs-string">"1"</span>,
+            <span class="hljs-attr">"address"</span>: <span class="hljs-string">"0x1234abcd..."</span>
+        },
+        {
+            <span class="hljs-attr">"id"</span>: <span class="hljs-string">"2"</span>,
+            <span class="hljs-attr">"address"</span>: <span class="hljs-string">"0x5678efgh..."</span>
+        }
+    ]
+}
+</code></pre>
+<p><strong>Response: Error</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"error"</span>: <span class="hljs-string">"No Wallets Found"</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="3b-wallets-request"></a><a href="#3b-wallets-request" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3.b WALLETS_REQUEST</h3>
+<ul>
+<li><strong>Source:</strong> SK Connect Background Script</li>
+<li><strong>Target:</strong> SK Identity Wallet</li>
+<li><strong>Endpoint:</strong>  <code>/WALLETS_REQUEST</code></li>
+<li><strong>Protocol:</strong>  Websocket Connection</li>
+</ul>
+<p><strong>Request Example</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"getWallets"</span>
+}
+</code></pre>
+<p><strong>Response: Success</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"wallets"</span>: [
+        {
+            <span class="hljs-attr">"id"</span>: <span class="hljs-string">"1"</span>,
+            <span class="hljs-attr">"address"</span>: <span class="hljs-string">"0x1234abcd..."</span>
+        },
+        {
+            <span class="hljs-attr">"id"</span>: <span class="hljs-string">"2"</span>,
+            <span class="hljs-attr">"address"</span>: <span class="hljs-string">"0x5678efgh..."</span>
+        }
+    ]
+}
+</code></pre>
+<p><strong>Response: Error</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"error"</span>: <span class="hljs-string">"No Wallets Found"</span>
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="4-json-keystore-unlock"></a><a href="#4-json-keystore-unlock" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4: JSON Keystore Unlock</h2>
+<h3><a class="anchor" aria-hidden="true" id="4a-unlock"></a><a href="#4a-unlock" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4.a UNLOCK</h3>
+<ul>
+<li><strong>Source:</strong> SK Connect iFrame</li>
+<li><strong>Target:</strong> SK Connect Background Script</li>
+<li><strong>Endpoint:</strong>  <code>/UNLOCK</code></li>
+<li><strong>Protocol:</strong>  Chrome Messaging</li>
+</ul>
+<p><strong>Request Example</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"wallet"</span>: <span class="hljs-string">"0xabcd1234"</span>,
+    <span class="hljs-attr">"password"</span>: <span class="hljs-string">"pass1234"</span>
+}
+</code></pre>
+<p><strong>Response: Success</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Wallet Unlocked Successfully"</span>
+}
+</code></pre>
+<p><strong>Response: Error</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"error"</span>: <span class="hljs-string">"Invalid Credentials"</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="4b-unlock"></a><a href="#4b-unlock" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4.b UNLOCK</h3>
+<ul>
+<li><strong>Source:</strong> SK Connect Background Script</li>
+<li><strong>Target:</strong> SK Identity Wallet</li>
+<li><strong>Endpoint:</strong>  <code>/UNLOCK</code></li>
+<li><strong>Protocol:</strong>  Websockets Connection</li>
+</ul>
+<p><strong>Request Example</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"wallet"</span>: <span class="hljs-string">"0xabcd1234"</span>,
+    <span class="hljs-attr">"password"</span>: <span class="hljs-string">"pass1234"</span>
+}
+</code></pre>
+<p><strong>Response: Success</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Wallet Unlocked Successfully"</span>
+}
+</code></pre>
+<p><strong>Response: Error</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"error"</span>: <span class="hljs-string">"Invalid Credentials"</span>
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="5-request-attributes-and-documents"></a><a href="#5-request-attributes-and-documents" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5: Request Attributes and Documents</h2>
+<h3><a class="anchor" aria-hidden="true" id="5a-attr-req"></a><a href="#5a-attr-req" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5.a ATTR_REQ</h3>
+<ul>
+<li><strong>Source:</strong> SK Connect iFrame</li>
+<li><strong>Target:</strong> SK Connect Background Script</li>
+<li><strong>Endpoint:</strong>  <code>/ATTR_REQ</code></li>
+<li><strong>Protocol:</strong>  Chrome Messaging</li>
+</ul>
+<p><strong>Request Example</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"required"</span>: [
+        {
+            <span class="hljs-attr">"name"</span>: <span class="hljs-string">"First Name"</span>,
+            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"first_name"</span>,
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"http://platform.selfkey.org/schema/attribute/first-name.json"</span>
+        },
+        {
+            <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Last Name"</span>,
+            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"last_name"</span>,
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"http://platform.selfkey.org/schema/attribute/last-name.json"</span>
+        },
+        {
+            <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Email Address"</span>,
+            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"email_address"</span>,
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"http://platform.selfkey.org/schema/attribute/email.json"</span>
+        },
+        {
+            <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Phone"</span>,
+            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"phone_number"</span>,
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"http://platform.selfkey.org/schema/attribute/phone-number.json"</span>
+        }
+    ]
+}
+</code></pre>
+<p><strong>Response: Success</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"attributes"</span>: [
+        {
+            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"first_name"</span>,
+            <span class="hljs-attr">"value"</span>: <span class="hljs-string">"Bobby"</span>
+        },
+        {
+            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"last_name"</span>,
+            <span class="hljs-attr">"value"</span>: <span class="hljs-string">"Lee"</span>
+        },
+        {
+            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"email_address"</span>,
+            <span class="hljs-attr">"value"</span>: <span class="hljs-string">"bobby@bitcoin.com"</span>
+        },
+        {
+            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"phone_number"</span>,
+            <span class="hljs-attr">"value"</span>: <span class="hljs-string">"18001234567"</span>
+        }
+    ]
+}
+</code></pre>
+<p><strong>Response: Error</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"error"</span>: <span class="hljs-string">"Attrbute Missing"</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="5b-attr-req"></a><a href="#5b-attr-req" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5.b ATTR_REQ</h3>
+<ul>
+<li><strong>Source:</strong> SK Connect Background Script</li>
+<li><strong>Target:</strong> SK Identity Wallet</li>
+<li><strong>Endpoint:</strong>  <code>/ATTR_REQ</code></li>
+<li><strong>Protocol:</strong>  Websockets Connection</li>
+</ul>
+<p><strong>Request Example</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"required"</span>: [
+        {
+            <span class="hljs-attr">"name"</span>: <span class="hljs-string">"First Name"</span>,
+            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"first_name"</span>,
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"http://platform.selfkey.org/schema/attribute/first-name.json"</span>
+        },
+        {
+            <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Last Name"</span>,
+            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"last_name"</span>,
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"http://platform.selfkey.org/schema/attribute/last-name.json"</span>
+        },
+        {
+            <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Email Address"</span>,
+            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"email_address"</span>,
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"http://platform.selfkey.org/schema/attribute/email.json"</span>
+        },
+        {
+            <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Phone"</span>,
+            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"phone_number"</span>,
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"http://platform.selfkey.org/schema/attribute/phone-number.json"</span>
+        }
+    ]
+}
+</code></pre>
+<p><strong>Response: Success</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"attributes"</span>: [
+        {
+            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"first_name"</span>,
+            <span class="hljs-attr">"value"</span>: <span class="hljs-string">"Bobby"</span>
+        },
+        {
+            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"last_name"</span>,
+            <span class="hljs-attr">"value"</span>: <span class="hljs-string">"Lee"</span>
+        },
+        {
+            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"email_address"</span>,
+            <span class="hljs-attr">"value"</span>: <span class="hljs-string">"bobby@bitcoin.com"</span>
+        },
+        {
+            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"phone_number"</span>,
+            <span class="hljs-attr">"value"</span>: <span class="hljs-string">"18001234567"</span>
+        }
+    ]
+}
+</code></pre>
+<p><strong>Response: Error</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"error"</span>: <span class="hljs-string">"Attrbute Missing"</span>
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="6-server-authentication-request"></a><a href="#6-server-authentication-request" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>6: Server Authentication Request</h2>
+<h3><a class="anchor" aria-hidden="true" id="6a-auth-req"></a><a href="#6a-auth-req" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>6.a AUTH_REQ</h3>
+<ul>
+<li><strong>Source:</strong> SK Connect iFrame</li>
+<li><strong>Target:</strong> SK Connect Background Script</li>
+<li><strong>Endpoint:</strong>  <code>/AUTH_REQUEST</code></li>
+<li><strong>Protocol:</strong>  Chrome Messaging</li>
+</ul>
+<p><strong>Request Example</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"wallet"</span>: <span class="hljs-string">"0x1234abcd"</span>,
+    <span class="hljs-attr">"signature"</span>: <span class="hljs-string">"{\"r\":{\"type\":\"Buffer\",\"data\":[215,252,52,209,99,115,65,20,176,235,54,88,127,105,159,87,211,198,96,96,196,194,207,121,162,11,40,127,82,95,131,13]},\"s\":{\"type\":\"Buffer\",\"data\":[80,25,172,33,158,87,250,185,205,28,213,156,102,150,182,82,245,78,175,18,35,87,16,123,160,10,197,42,163,156,2,58]},\"v\":28}"</span>,
+    <span class="hljs-attr">"attributes"</span>: [
+        {
+            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"first_name"</span>,
+            <span class="hljs-attr">"value"</span>: <span class="hljs-string">"Bobby"</span>
+        },
+        {
+            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"last_name"</span>,
+            <span class="hljs-attr">"value"</span>: <span class="hljs-string">"Lee"</span>
+        },
+        {
+            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"email_address"</span>,
+            <span class="hljs-attr">"value"</span>: <span class="hljs-string">"bobby@bitcoin.com"</span>
+        },
+        {
+            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"phone_number"</span>,
+            <span class="hljs-attr">"value"</span>: <span class="hljs-string">"18001234567"</span>
+        }
+    ]
+}
+</code></pre>
+<p><strong>Response: Success</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Authentication Successful"</span>,
+    <span class="hljs-attr">"redirectUrl"</span>: <span class="hljs-string">"/success.html"</span>
+}
+</code></pre>
+<p><strong>Response: Error</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"error"</span>: <span class="hljs-string">"Authentication Failed"</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="6b-auth-req"></a><a href="#6b-auth-req" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>6.b AUTH_REQ</h3>
+<ul>
+<li><strong>Source:</strong> SK Connect Background Script</li>
+<li><strong>Target:</strong> SK Identity Wallet</li>
+<li><strong>Endpoint:</strong>  <code>/AUTH_REQUEST</code></li>
+<li><strong>Protocol:</strong>  Websockets Connection</li>
+</ul>
+<p><strong>Request Example</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"wallet"</span>: <span class="hljs-string">"0x1234abcd"</span>,
+    <span class="hljs-attr">"signature"</span>: <span class="hljs-string">"{\"r\":{\"type\":\"Buffer\",\"data\":[215,252,52,209,99,115,65,20,176,235,54,88,127,105,159,87,211,198,96,96,196,194,207,121,162,11,40,127,82,95,131,13]},\"s\":{\"type\":\"Buffer\",\"data\":[80,25,172,33,158,87,250,185,205,28,213,156,102,150,182,82,245,78,175,18,35,87,16,123,160,10,197,42,163,156,2,58]},\"v\":28}"</span>,
+    <span class="hljs-attr">"attributes"</span>: [
+        {
+            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"first_name"</span>,
+            <span class="hljs-attr">"value"</span>: <span class="hljs-string">"Bobby"</span>
+        },
+        {
+            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"last_name"</span>,
+            <span class="hljs-attr">"value"</span>: <span class="hljs-string">"Lee"</span>
+        },
+        {
+            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"email_address"</span>,
+            <span class="hljs-attr">"value"</span>: <span class="hljs-string">"bobby@bitcoin.com"</span>
+        },
+        {
+            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"phone_number"</span>,
+            <span class="hljs-attr">"value"</span>: <span class="hljs-string">"18001234567"</span>
+        }
+    ]
+}
+</code></pre>
+<p><strong>Response: Success</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Authentication Successful"</span>,
+    <span class="hljs-attr">"redirectUrl"</span>: <span class="hljs-string">"/success.html"</span>
+}
+</code></pre>
+<p><strong>Response: Error</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"error"</span>: <span class="hljs-string">"Authentication Failed"</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="6c-lws-request"></a><a href="#6c-lws-request" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>6.c LWS_REQUEST</h3>
+<ul>
+<li><strong>Source:</strong> SK Identity Wallet</li>
+<li><strong>Target:</strong> Server Implementation</li>
+<li><strong>Endpoint:</strong>  <code>/LWS_REQUEST</code></li>
+<li><strong>Protocol:</strong>  HTTP Request</li>
+</ul>
+<p><strong>Request Example</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"wallet"</span>: <span class="hljs-string">"0x1234abcd"</span>,
+    <span class="hljs-attr">"signature"</span>: <span class="hljs-string">"{\"r\":{\"type\":\"Buffer\",\"data\":[215,252,52,209,99,115,65,20,176,235,54,88,127,105,159,87,211,198,96,96,196,194,207,121,162,11,40,127,82,95,131,13]},\"s\":{\"type\":\"Buffer\",\"data\":[80,25,172,33,158,87,250,185,205,28,213,156,102,150,182,82,245,78,175,18,35,87,16,123,160,10,197,42,163,156,2,58]},\"v\":28}"</span>,
+    <span class="hljs-attr">"attributes"</span>: [
+        {
+            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"first_name"</span>,
+            <span class="hljs-attr">"value"</span>: <span class="hljs-string">"Bobby"</span>
+        },
+        {
+            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"last_name"</span>,
+            <span class="hljs-attr">"value"</span>: <span class="hljs-string">"Lee"</span>
+        },
+        {
+            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"email_address"</span>,
+            <span class="hljs-attr">"value"</span>: <span class="hljs-string">"bobby@bitcoin.com"</span>
+        },
+        {
+            <span class="hljs-attr">"key"</span>: <span class="hljs-string">"phone_number"</span>,
+            <span class="hljs-attr">"value"</span>: <span class="hljs-string">"18001234567"</span>
+        }
+    ]
+}
+</code></pre>
+<p><strong>Response: Success</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Authentication Successful"</span>,
+    <span class="hljs-attr">"redirectUrl"</span>: <span class="hljs-string">"/success.html"</span>
+}
+</code></pre>
+<p><strong>Response: Error</strong></p>
+<pre><code class="hljs css languages- json">{
+    <span class="hljs-attr">"error"</span>: <span class="hljs-string">"Authentication Failed"</span>
+}
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/login-with-selfkey/lws-flow.html">← Technical Flow Diagram</a><a class="docs-next button" href="/docs/login-with-selfkey/lws-auth.html">Authentication Process →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#1-preflight-connect-checks">1: Preflight Connect Checks</a><ul class="toc-headings"><li><a href="#1a-lws-init">1.a: LWS_INIT</a></li><li><a href="#1b-connect">1.b: CONNECT</a></li><li><a href="#1c-connect">1.c CONNECT</a></li><li><a href="#1d-connect">1.d CONNECT</a></li></ul></li><li><a href="#2-client-authentication-request">2: Client Authentication Request</a><ul class="toc-headings"><li><a href="#2a-auth-request">2.a AUTH_REQUEST</a></li></ul></li><li><a href="#3-available-wallets">3: Available Wallets</a><ul class="toc-headings"><li><a href="#3a-wallets-request">3.a WALLETS_REQUEST</a></li><li><a href="#3b-wallets-request">3.b WALLETS_REQUEST</a></li></ul></li><li><a href="#4-json-keystore-unlock">4: JSON Keystore Unlock</a><ul class="toc-headings"><li><a href="#4a-unlock">4.a UNLOCK</a></li><li><a href="#4b-unlock">4.b UNLOCK</a></li></ul></li><li><a href="#5-request-attributes-and-documents">5: Request Attributes and Documents</a><ul class="toc-headings"><li><a href="#5a-attr-req">5.a ATTR_REQ</a></li><li><a href="#5b-attr-req">5.b ATTR_REQ</a></li></ul></li><li><a href="#6-server-authentication-request">6: Server Authentication Request</a><ul class="toc-headings"><li><a href="#6a-auth-req">6.a AUTH_REQ</a></li><li><a href="#6b-auth-req">6.b AUTH_REQ</a></li><li><a href="#6c-lws-request">6.c LWS_REQUEST</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><a href="/" class="nav-home"><img src="/img/logo.png" alt="Developers" height="60"/></a><section class="sitemap"><div><h5>Docs</h5><a href="/docs/en/getting-started/selfkey-intro.html">Getting Started</a><a href="/docs/en/marketplace/marketplace-intro.html">Marketplace Integration</a><a href="/docs/en/login-with-selfkey/lws-intro.html">Login with Selfkey</a><a href="/docs/en/additional-projects/json-schema-intro.html">Additional Projects</a></div><div><h5>Resources</h5><a href="/en/resources/overview.html">View All Resources</a><a href="/en/resources/lws-nodejs.html">Login with SelfKey NodeJS SDK</a><a href="https://twitter.com/SelfKeyDevelopers" target="_blank" rel="noreferrer noopener">Selfkey Developer Twitter</a></div><div><h5>More</h5><a href="/blog">SelfKey Developer Blog</a><a href="https://github.com/SelfKeyFoundation">SelfKey Foundation GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/SelfKeyFoundation/Identity-Wallet" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2018 SelfKey Foundation</section></footer></div><script src="http://localhost:35729/livereload.js"></script></body></html>

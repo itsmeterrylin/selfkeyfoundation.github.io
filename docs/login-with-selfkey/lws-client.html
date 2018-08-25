@@ -32,20 +32,22 @@
 <p>The Login with SelfKey client library accepts a configuration object containing the following attributes:</p>
 <ul>
 <li><strong><code>path</code></strong> is fully-qualified URL or relative path to the Login with SelfKey API exposed by your web service,</li>
+<li><strong><code>el</code></strong> should be a dom element, array of dom elements or string representing a query selector</li>
 <li><strong><code>attributes</code></strong> contains an optional array of additional identity attributes to request from the user's SelfKey ID Wallet referenced by their schema URL, and</li>
 <li><strong><code>onAuthResponse</code></strong> contains an optional callback function which receives the response from the Response Endpoint. If you omit the <code>onAuthResponse</code> handler the Login with SelfKey client library will assume your application uses cookie-based authentication and make a POST request to the login endpoint to activate the user's session in the browser.</li>
 </ul>
 <p>For example:</p>
 <pre><code class="hljs css languages- javascript"><span class="hljs-keyword">const</span> config = {
   <span class="hljs-attr">path</span>: <span class="hljs-string">"/api/v1/auth/selfkey"</span>,
+  <span class="hljs-attr">el</span>: <span class="hljs-string">".lwsConfig"</span>,
   <span class="hljs-attr">attributes</span>: [
     {
-      <span class="hljs-attr">key</span>: <span class="hljs-string">"firstname"</span>,
+      <span class="hljs-attr">key</span>: <span class="hljs-string">"first_name"</span>,
       <span class="hljs-attr">label</span>: <span class="hljs-string">"First Name"</span>,
       <span class="hljs-attr">attribute</span>: <span class="hljs-string">"http://platform.selfkey.org/schema/attribute/first-name.json"</span>
     },
     {
-      <span class="hljs-attr">key</span>: <span class="hljs-string">"lastname"</span>,
+      <span class="hljs-attr">key</span>: <span class="hljs-string">"last_name"</span>,
       <span class="hljs-attr">label</span>: <span class="hljs-string">"Last Name"</span>,
       <span class="hljs-attr">attribute</span>: <span class="hljs-string">"http://platform.selfkey.org/schema/attribute/last-name.json"</span>
     }

@@ -31,30 +31,47 @@
 <h2><a class="anchor" aria-hidden="true" id="login-with-selfkey-client-configuration"></a><a href="#login-with-selfkey-client-configuration" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Login with SelfKey Client Configuration</h2>
 <p>The Login with SelfKey client library accepts a configuration object containing the following attributes:</p>
 <ul>
-<li><strong><code>path</code></strong> is fully-qualified URL or relative path to the Login with SelfKey API exposed by your web service,</li>
+<li><strong><code>path</code></strong> is fully-qualified URL or relative path to the Login with SelfKey API exposed by your web service</li>
 <li><strong><code>el</code></strong> should be a dom element, array of dom elements or string representing a query selector</li>
-<li><strong><code>attributes</code></strong> contains an optional array of additional identity attributes to request from the user's SelfKey ID Wallet referenced by their schema URL, and</li>
+<li><strong><code>website</code></strong> an object with links and routes related to the website being integrated</li>
+<li><strong><code>attributes</code></strong> contains an optional array of additional identity attributes to request from the user's SelfKey ID Wallet referenced by their schema URL</li>
 <li><strong><code>onAuthResponse</code></strong> contains an optional callback function which receives the response from the Response Endpoint. If you omit the <code>onAuthResponse</code> handler the Login with SelfKey client library will assume your application uses cookie-based authentication and make a POST request to the login endpoint to activate the user's session in the browser.</li>
 </ul>
+<p>We currently support only one <code>lws.init</code> call and another can be made only after <code>lws.teardown</code></p>
 <p>For example:</p>
-<pre><code class="hljs css languages- javascript"><span class="hljs-keyword">const</span> config = {
-  <span class="hljs-attr">path</span>: <span class="hljs-string">"/api/v1/auth/selfkey"</span>,
-  <span class="hljs-attr">el</span>: <span class="hljs-string">".lwsConfig"</span>,
-  <span class="hljs-attr">attributes</span>: [
-    {
-      <span class="hljs-attr">key</span>: <span class="hljs-string">"first_name"</span>,
-      <span class="hljs-attr">label</span>: <span class="hljs-string">"First Name"</span>,
-      <span class="hljs-attr">attribute</span>: <span class="hljs-string">"http://platform.selfkey.org/schema/attribute/first-name.json"</span>
+<pre><code class="hljs css languages- javascript">lws.init({
+    <span class="hljs-attr">el</span>: <span class="hljs-string">'.lwsClient'</span>,
+    <span class="hljs-attr">website</span>: {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">'LWS Example'</span>,
+        <span class="hljs-attr">url</span>: <span class="hljs-string">'http://localhost:3000/'</span>,
+        <span class="hljs-attr">termsUrl</span>: <span class="hljs-string">'http://localhost:3000/terms.html'</span>,
+        <span class="hljs-attr">policyUrl</span>: <span class="hljs-string">'http://localhost:3000/policy.html'</span>,
+        <span class="hljs-attr">apiUrl</span>: <span class="hljs-string">'http://localhost:3000/api/v1/selfkey/'</span>,
     },
-    {
-      <span class="hljs-attr">key</span>: <span class="hljs-string">"last_name"</span>,
-      <span class="hljs-attr">label</span>: <span class="hljs-string">"Last Name"</span>,
-      <span class="hljs-attr">attribute</span>: <span class="hljs-string">"http://platform.selfkey.org/schema/attribute/last-name.json"</span>
+    <span class="hljs-attr">attributes</span>: [
+        {
+            <span class="hljs-attr">key</span>: <span class="hljs-string">"first_name"</span>,
+            <span class="hljs-attr">label</span>: <span class="hljs-string">"First Name"</span>,
+            <span class="hljs-attr">attribute</span>: <span class="hljs-string">"http://platform.selfkey.org/schema/attribute/first-name.json"</span>
+        },
+        {
+            <span class="hljs-attr">key</span>: <span class="hljs-string">"last_name"</span>,
+            <span class="hljs-attr">label</span>: <span class="hljs-string">"Last Name"</span>,
+            <span class="hljs-attr">attribute</span>: <span class="hljs-string">"http://platform.selfkey.org/schema/attribute/last-name.json"</span>
+        },
+        {
+            <span class="hljs-attr">key</span>: <span class="hljs-string">"email"</span>,
+            <span class="hljs-attr">label</span>: <span class="hljs-string">"Email"</span>
+        },
+    ],
+    <span class="hljs-attr">onAuthResponse</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err, res</span>) </span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'OnAuthResponse'</span>, err, res);
+        <span class="hljs-keyword">if</span> (err) {
+            alert(<span class="hljs-string">'Error! '</span> + err.message);
+            <span class="hljs-keyword">return</span>;
+        }
+        alert(<span class="hljs-built_in">JSON</span>.stringify(res));
     }
-  ],
-  <span class="hljs-attr">onAuthResponse</span>: <span class="hljs-function">(<span class="hljs-params">err, response</span>) =&gt;</span> {
-    <span class="hljs-comment">// Handle server response</span>
-  }
-};
+});
 </code></pre>
 </span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/login-with-selfkey/lws-data.html">← Data and Document Transfer</a><a class="docs-next button" href="/docs/login-with-selfkey/lws-server.html">Server Implementation →</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#client-library-overview">Client Library Overview</a></li><li><a href="#login-with-selfkey-client-configuration">Login with SelfKey Client Configuration</a></li></ul></nav></div><footer class="nav-footer" id="footer"><a href="/" class="nav-home"><img src="/img/logo.png" alt="Developers" height="60"/></a><section class="sitemap"><div><h5>Docs</h5><a href="/docs/en/getting-started/selfkey-intro.html">Getting Started</a><a href="/docs/en/marketplace/marketplace-intro.html">Marketplace Integration</a><a href="/docs/en/login-with-selfkey/lws-intro.html">Login with Selfkey</a><a href="/docs/en/additional-projects/json-schema-intro.html">Additional Projects</a></div><div><h5>Resources</h5><a href="/en/resources/overview.html">View All Resources</a><a href="/en/resources/lws-nodejs.html">Login with SelfKey NodeJS SDK</a><a href="https://twitter.com/SelfKeyDevelopers" target="_blank" rel="noreferrer noopener">Selfkey Developer Twitter</a></div><div><h5>More</h5><a href="/blog">SelfKey Developer Blog</a><a href="https://github.com/SelfKeyFoundation">SelfKey Foundation GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/SelfKeyFoundation/Identity-Wallet" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2018 SelfKey Foundation</section></footer></div><script src="http://localhost:35729/livereload.js"></script></body></html>

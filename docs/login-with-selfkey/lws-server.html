@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Server Implementation · Developers</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Server Library Overview"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Server Implementation · Developers"/><meta property="og:type" content="website"/><meta property="og:url" content="https://selfkeyfoundation.github.io/index.html"/><meta property="og:description" content="## Server Library Overview"/><meta property="og:image" content="https://selfkeyfoundation.github.io/img/logo.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://selfkeyfoundation.github.io/img/logo.png"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/obsidian.min.css"/><link rel="alternate" type="application/atom+xml" href="https://selfkeyfoundation.github.io/blog/atom.xml" title="Developers Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://selfkeyfoundation.github.io/blog/feed.xml" title="Developers Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo.png" alt="Developers"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/getting-started/selfkey-intro.html" target="_self">Docs</a></li><li class=""><a href="/docs/resources/overview.html" target="_self">Resources</a></li><li class=""><a href="/help.html" target="_self">Help</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Login with SelfKey</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul><li class="navListItem"><a class="navItem" href="/docs/getting-started/selfkey-intro.html">About SelfKey</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started/key-token-intro.html">KEY Token Contract</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started/idw-intro.html">SelfKey Identity Wallet</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started/skc-intro.html">SelfKey Connect (Browser Ext.)</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Marketplace Integrations</h3><ul><li class="navListItem"><a class="navItem" href="/docs/marketplace/marketplace-intro.html">About the Marketplace</a></li><li class="navListItem"><a class="navItem" href="/docs/marketplace/marketplace-api.html">Marketplace API</a></li><li class="navListItem"><a class="navItem" href="/docs/marketplace/marketplace-exchanges.html">Exchanges</a></li><li class="navListItem"><a class="navItem" href="/docs/marketplace/marketplace-incorporations.html">Incorporations</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Login with SelfKey</h3><ul><li class="navListItem"><a class="navItem" href="/docs/login-with-selfkey/lws-intro.html">About Login with SelfKey</a></li><li class="navListItem"><a class="navItem" href="/docs/login-with-selfkey/lws-flow.html">Technical Flow Diagram</a></li><li class="navListItem"><a class="navItem" href="/docs/login-with-selfkey/lws-auth.html">Authentication Process</a></li><li class="navListItem"><a class="navItem" href="/docs/login-with-selfkey/lws-data.html">Data and Document Transfer</a></li><li class="navListItem"><a class="navItem" href="/docs/login-with-selfkey/lws-client.html">Client Configuration</a></li><li class="navListItem"><a class="navItem" href="/docs/login-with-selfkey/lws-attributes.html">Attributes Reference</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/login-with-selfkey/lws-server.html">Server Implementation</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Additional Projects</h3><ul><li class="navListItem"><a class="navItem" href="/docs/additional-projects/json-schema-intro.html">SelfKey JSON Schema</a></li><li class="navListItem"><a class="navItem" href="/docs/additional-projects/staking-intro.html">Staking KEY</a></li><li class="navListItem"><a class="navItem" href="/docs/additional-projects/did-intro.html">Decentralized Identifiers (DID)</a></li><li class="navListItem"><a class="navItem" href="/docs/additional-projects/verifiable-creds-intro.html">Verifiable Credentials</a></li></ul></div></div></section></div><script>
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Server Implementation · Developers</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Server Library Overview"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Server Implementation · Developers"/><meta property="og:type" content="website"/><meta property="og:url" content="https://selfkeyfoundation.github.io/index.html"/><meta property="og:description" content="## Server Library Overview"/><meta property="og:image" content="https://selfkeyfoundation.github.io/img/logo.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://selfkeyfoundation.github.io/img/logo.png"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/obsidian.min.css"/><link rel="alternate" type="application/atom+xml" href="https://selfkeyfoundation.github.io/blog/atom.xml" title="Developers Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://selfkeyfoundation.github.io/blog/feed.xml" title="Developers Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/logo.png" alt="Developers"/></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/getting-started/selfkey-intro.html" target="_self">Docs</a></li><li class=""><a href="/docs/resources/overview.html" target="_self">Resources</a></li><li class="siteNavGroupActive"><a href="/docs/selfkey-api/api-list.html" target="_self">API</a></li><li class=""><a href="/help.html" target="_self">Help</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Login with SelfKey</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul><li class="navListItem"><a class="navItem" href="/docs/getting-started/selfkey-intro.html">About SelfKey</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started/key-token-intro.html">KEY Token</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started/idw-intro.html">SelfKey Identity Wallet</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started/skext-intro.html">SelfKey Extension</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">SelfKey API</h3><ul><li class="navListItem"><a class="navItem" href="/docs/selfkey-api/api-intro.html">Overview</a></li><li class="navListItem"><a class="navItem" href="/docs/selfkey-api/api-list.html">All Endpoints</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">SelfKey Marketplace</h3><ul><li class="navListItem"><a class="navItem" href="/docs/marketplace/marketplace-intro.html">About SelfKey Marketplace</a></li><li class="navListItem"><a class="navItem" href="/docs/marketplace/marketplace-api.html">Integration Process</a></li><li class="navListItem"><a class="navItem" href="/docs/marketplace/marketplace-exchanges.html">GUIDE: Exchanges</a></li><li class="navListItem"><a class="navItem" href="/docs/marketplace/marketplace-incorporations.html">GUIDE: Incorporations</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Login with SelfKey</h3><ul><li class="navListItem"><a class="navItem" href="/docs/login-with-selfkey/lws-intro.html">About Login with SelfKey</a></li><li class="navListItem"><a class="navItem" href="/docs/login-with-selfkey/lws-auth.html">Authentication Process</a></li><li class="navListItem"><a class="navItem" href="/docs/login-with-selfkey/lws-client.html">Client Configuration</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/login-with-selfkey/lws-server.html">Server Implementation</a></li><li class="navListItem"><a class="navItem" href="/docs/login-with-selfkey/lws-int-bare.html">GUIDE: Basic LWS</a></li><li class="navListItem"><a class="navItem" href="/docs/login-with-selfkey/lws-int-mkt.html">GUIDE: Marketplace Only LWS</a></li><li class="navListItem"><a class="navItem" href="/docs/login-with-selfkey/lws-int-kyc.html">GUIDE: KYC Only LWS</a></li><li class="navListItem"><a class="navItem" href="/docs/login-with-selfkey/lws-int-full.html">GUIDE: Full LWS</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Additional Projects</h3><ul><li class="navListItem"><a class="navItem" href="/docs/additional-projects/json-schema-intro.html">SelfKey JSON Schema</a></li><li class="navListItem"><a class="navItem" href="/docs/additional-projects/staking-intro.html">Staking KEY</a></li><li class="navListItem"><a class="navItem" href="/docs/additional-projects/did-intro.html">Decentralized Identifiers (DID)</a></li><li class="navListItem"><a class="navItem" href="/docs/additional-projects/verifiable-creds-intro.html">Verifiable Credentials</a></li></ul></div></div></section></div><script>
             document.addEventListener('DOMContentLoaded', function() {
               createToggler('#navToggler', '#docsNav', 'docsSliderActive');
               createToggler('#tocToggler', 'body', 'tocActive');
@@ -40,97 +40,262 @@
 <p>Your web service must expose the following API endpoints relative to the path defined in the client config object to be compatible with Login with SelfKey.</p>
 <p>You may mount the Login with SelfKey API at any path in your application's router, however the relative route structure defined in this document must be maintained.</p>
 <p>For example, if you choose to mount the LWS API at <a href="https://example.com/api/v1/auth/selfkey">https://example.com/api/v1/auth/selfkey</a> you <strong>must</strong> implement each route as follows:</p>
-<pre><code class="hljs"><span class="hljs-symbol">GET</span>  /api/<span class="hljs-built_in">v1</span>/auth/<span class="hljs-keyword">selfkey
-</span><span class="hljs-symbol">POST</span> /api/<span class="hljs-built_in">v1</span>/auth/<span class="hljs-keyword">selfkey
-</span><span class="hljs-symbol">POST</span> /api/<span class="hljs-built_in">v1</span>/auth/<span class="hljs-keyword">selfkey/login </span>(optional)
-</code></pre>
-<h3><a class="anchor" aria-hidden="true" id="nonce-endpoint-get"></a><a href="#nonce-endpoint-get" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Nonce Endpoint (<code>GET /</code>)</h3>
-<p>The SelfKey Identity Wallet will make a <code>GET</code> request to this endpoint to retrieve a nonce for signing with the user's Ethereum private key. Your implementation must generate the nonce string in a cryptographically-secure fashion and store it in your application's session store in order to validate the signature produced by the SelfKey ID Wallet.  You can use the selfkey.js library or the SVS API to create the nonce if you prefer to not introduce additional dependencies.</p>
+<h3><a class="anchor" aria-hidden="true" id="full-api"></a><a href="#full-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Full API</h3>
+<h4><a class="anchor" aria-hidden="true" id="1-get-auth-challenge-1-get-auth-challenge"></a><a href="#1-get-auth-challenge-1-get-auth-challenge" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. <a href="#1-get-auth-challenge">GET /auth/challenge</a></h4>
+<h4><a class="anchor" aria-hidden="true" id="2-post-auth-challenge-2-post-auth-challenge"></a><a href="#2-post-auth-challenge-2-post-auth-challenge" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. <a href="#2-post-auth-challenge">POST /auth/challenge</a></h4>
+<h4><a class="anchor" aria-hidden="true" id="3-post-users-3-post-users"></a><a href="#3-post-users-3-post-users" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3. <a href="#3-post-users">POST /users</a></h4>
+<h4><a class="anchor" aria-hidden="true" id="4-get-auth-token-4-get-auth-token"></a><a href="#4-get-auth-token-4-get-auth-token" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4. <a href="#4-get-auth-token">GET /auth/token</a></h4>
+<h4><a class="anchor" aria-hidden="true" id="5-post-login-5-post-login"></a><a href="#5-post-login-5-post-login" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5. <a href="#5-post-login">POST /login</a></h4>
+<h4><a class="anchor" aria-hidden="true" id="6-get-templates-6-get-templates"></a><a href="#6-get-templates-6-get-templates" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>6. <a href="#6-get-templates">GET /templates/</a></h4>
+<h4><a class="anchor" aria-hidden="true" id="7-get-templates-templateid-schemajson-7-get-templates-templateid-schemajson"></a><a href="#7-get-templates-templateid-schemajson-7-get-templates-templateid-schemajson" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>7. <a href="#7-get-templates-templateid-schemajson">GET /templates/{templateId}/schema.json</a></h4>
+<h4><a class="anchor" aria-hidden="true" id="8-post-files-8-post-files"></a><a href="#8-post-files-8-post-files" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>8. <a href="#8-post-files">POST /files</a></h4>
+<h4><a class="anchor" aria-hidden="true" id="9-post-applications-9-post-applications"></a><a href="#9-post-applications-9-post-applications" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>9. <a href="#9-post-applications">POST /applications</a></h4>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="1-get-auth-challenge"></a><a href="#1-get-auth-challenge" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. <code>GET /auth/challenge</code></h3>
 <h4><a class="anchor" aria-hidden="true" id="response"></a><a href="#response" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Response</h4>
 <ul>
-<li><code>nonce</code> is a string generated in a cryptographically secure fashion.</li>
+<li><code>jwt</code> C-JWT (Challenge Token)</li>
 </ul>
-<p><strong>Example:</strong></p>
-<pre><code class="hljs css language-json">{ <span class="hljs-attr">"nonce"</span>: <span class="hljs-string">"u9YGjSOQ4g620ACyYdbyv978gbujhff6fygni9"</span> }
-</code></pre>
-<h3><a class="anchor" aria-hidden="true" id="authentication-endpoint-post"></a><a href="#authentication-endpoint-post" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Authentication Endpoint (<code>POST /</code>)</h3>
-<p>The SelfKey Identity Wallet will make a <code>POST</code> request to this endpoint containing the ethereum address, nonce, signature and the requested identity attributes, if any.</p>
-<h4><a class="anchor" aria-hidden="true" id="request"></a><a href="#request" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Request</h4>
-<ul>
-<li><code>publicKey</code> is the ethereum wallet address that the user unlocked to create the signature with the associated private key</li>
-<li><code>nonce</code> is the nonce used to create the signture along with the private key</li>
-<li><code>signature</code> is the ECDSA signature obtained by signing the nonce string with the user's Ethereum private key - base64 encoded string</li>
-<li><code>attributes</code> is an array of the requested identity attributes as defined in the client library configuration.  Attributes can consist of string data or documents sent as a base64 encoded data uri string.</li>
-</ul>
-<p><strong>Example:</strong></p>
-<pre><code class="hljs css language-json">{
-  <span class="hljs-attr">"publicKey"</span>: <span class="hljs-string">"2b6a21dc440cebd4bb9b91b27014ace8aa91a0b9"</span>,
-  <span class="hljs-attr">"nonce"</span>: <span class="hljs-string">"19B0KTk1b3OikJjy6Yjn3y5DfPgxVAT7RQa72d9nXrOO89bIkwMBIcBuSKbWlXAW"</span>,
-  <span class="hljs-attr">"signature"</span>: <span class="hljs-string">"eyJyIjoiZGRlNjgwYTJkMDhjNTQ4ZWVkNjYwYzA0YWVmODdmYWU4MzM1ZDU0ZTk5YzljZjYxYzY5YWNkZmU3YzQyNWVjNCIsInMiOiIxNzE5NDU3NmE0M2NjYjE3MTE4NTVjMjljMGU0MzAyMTYzMmZkMjY2ZDAzNjhiMzZlODAwN2Q0OTdjZDE3ZjU1IiwidiI6Mjh9"</span>,
-  <span class="hljs-attr">"attributes"</span>: [
-    {
-      <span class="hljs-attr">"key"</span>: <span class="hljs-string">"first_name"</span>,
-      <span class="hljs-attr">"label"</span>: <span class="hljs-string">"First Name"</span>,
-      <span class="hljs-attr">"document"</span>: <span class="hljs-literal">false</span>,
-      <span class="hljs-attr">"data"</span>: {
-        <span class="hljs-attr">"value"</span>: <span class="hljs-string">"John"</span>
-      }
-    },
-    {
-      <span class="hljs-attr">"key"</span>: <span class="hljs-string">"last_name"</span>,
-      <span class="hljs-attr">"label"</span>: <span class="hljs-string">"Last Name"</span>,
-      <span class="hljs-attr">"document"</span>: <span class="hljs-literal">false</span>,
-      <span class="hljs-attr">"data"</span>: {
-        <span class="hljs-attr">"value"</span>: <span class="hljs-string">"Smith"</span>
-      }
-    },
-    {
-      <span class="hljs-attr">"key"</span>: <span class="hljs-string">"email"</span>,
-      <span class="hljs-attr">"label"</span>: <span class="hljs-string">"Email"</span>,
-      <span class="hljs-attr">"document"</span>: <span class="hljs-literal">false</span>,
-      <span class="hljs-attr">"data"</span>: {
-        <span class="hljs-attr">"value"</span>: <span class="hljs-string">"john.smith@example.com"</span>
-      }
-    },
-    {
-      <span class="hljs-attr">"key"</span>: <span class="hljs-string">"passport"</span>,
-      <span class="hljs-attr">"label"</span>: <span class="hljs-string">"Passport"</span>,
-      <span class="hljs-attr">"document"</span>: <span class="hljs-literal">true</span>,
-      <span class="hljs-attr">"data"</span>: {
-        <span class="hljs-attr">"value"</span>: <span class="hljs-string">"YTJkMDhjNTQ4ZWVkNjYwYzA0YWVmODdmYWU4MzM1ZDU0ZTk5YzljZjYxYzY5YWNkZmU3YzQyNWVjNCIsInMiOiIxNzE5NDU3NmE0M2NjYjE3MTE4NTVjMjljMGU0MzAyMTYzMjYwYzA0YWVmODdmYWU4MzM1ZDkMDhjNTQ4ZWVkNjYwYzA0YWVmOD"</span>
-      }
-    }
-  ]
+<pre><code class="hljs css language-json">
+<span class="hljs-number">200</span>
+
+{ 
+  <span class="hljs-attr">"jwt"</span>: <span class="hljs-string">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNDIuMjEuMzEuNTEiLCJpYXQiOjE1MTYyMzkwMjIsImV4cCI6MTUxNjQzOTAyMiwiY2hhbGxlbmdlIjoiMDJiODRjOWIyNzYyZWYzNjVhMzgxNGRlODZmZTFkMzhlNThhOTYzNWM0ZGUwYzI0ZTQ3YjlhYWNkYjI2OTZiOCJ9.ogbU0vpulk0AGRaN51fnaB04hhtVMYy_LA8u-qM0Yh4"</span> 
 }
+
 </code></pre>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="2-post-auth-challenge"></a><a href="#2-post-auth-challenge" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. <code>POST /auth/challenge</code></h3>
+<h4><a class="anchor" aria-hidden="true" id="headers"></a><a href="#headers" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Headers</h4>
+<pre><code class="hljs css language-javascript">Authorization: Bearer &lt;C-JWT&gt;
+User-Agent: SelfkeyIDW/${wallet-version}
+Origin: WEBPAGE URL or <span class="hljs-string">'IDW'</span>
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="body"></a><a href="#body" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Body</h4>
+<pre><code class="hljs css language-javascript">{ 
+  <span class="hljs-string">"signature"</span>: <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">signature</span>&gt;</span> 
+} 
+</span></code></pre>
 <h4><a class="anchor" aria-hidden="true" id="response-1"></a><a href="#response-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Response</h4>
 <ul>
-<li><code>token</code> is either a single-use, expiring authentication token returned to the browser that can be used to esablish a cookie-based session <strong>or</strong> a long-lived authentication token (such as a JWT) for your service.</li>
+<li><code>jwt</code> W-JWT (Wallet Token)</li>
 </ul>
 <p><strong>Example:</strong></p>
-<pre><code class="hljs css language-json">{
-  <span class="hljs-attr">"token"</span>: <span class="hljs-string">"CnQbKQq2lHI3qVIs3udE4G7ENVudhEzklNOQ4TG08jgKjwE29aCh6kCZLgU8dsn4"</span>
+<pre><code class="hljs css language-json">
+<span class="hljs-number">200</span>
+
+{ 
+  <span class="hljs-attr">"jwt"</span>: <span class="hljs-string">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNDIuMjEuMzEuNTEiLCJpYXQiOjE1MTYyMzkwMjIsImV4cCI6MTUxNjQzOTAyMiwiY2hhbGxlbmdlIjoiMDJiODRjOWIyNzYyZWYzNjVhMzgxNGRlODZmZTFkMzhlNThhOTYzNWM0ZGUwYzI0ZTQ3YjlhYWNkYjI2OTZiOCJ9.ogbU0vpulk0AGRaN51fnaB04hhtVMYy_LA8u-qM0Yh4"</span> 
 }
+
 </code></pre>
-<h3><a class="anchor" aria-hidden="true" id="login-endpoint-post-login"></a><a href="#login-endpoint-post-login" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Login Endpoint (<code>POST /login</code>)</h3>
-<p>The login endpoint is used to establish a cookie-based session between the user's browser and your web app. <strong>If your web app uses bearer tokens for authentication and you have implemented the <code>onAuthResponse</code> handler on the client side you do not need to implement this endpoint.</strong></p>
-<p>The browser will make a POST request to this endpoint containing the token returned by the response endpoint. This is required to esablish a cookie-based user session for the browser, since the ID Wallet and browser do not share a cookie store.</p>
-<h4><a class="anchor" aria-hidden="true" id="request-1"></a><a href="#request-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Request</h4>
+<h4><a class="anchor" aria-hidden="true" id="errors"></a><a href="#errors" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Errors</h4>
 <ul>
-<li><code>token</code> is the single-use, expiring authentication token returned by the Response Endpoint.</li>
+<li>400</li>
+<li>401</li>
 </ul>
-<p><strong>Example:</strong></p>
-<pre><code class="hljs css language-json">{
-  <span class="hljs-attr">"token"</span>: <span class="hljs-string">"CnQbKQq2lHI3qVIs3udE4G7ENVudhEzklNOQ4TG08jgKjwE29aCh6kCZLgU8dsn4"</span>
-}
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="3-post-users"></a><a href="#3-post-users" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3. <code>POST /users</code></h3>
+<h4><a class="anchor" aria-hidden="true" id="headers-1"></a><a href="#headers-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Headers</h4>
+<pre><code class="hljs css language-javascript">Authorization: Bearer &lt;W-JWT&gt;
+User-Agent: SelfkeyIDW/${wallet-version}
+Origin: WEBPAGE URL or <span class="hljs-string">'IDW'</span>
+Content-Type: multipart/form-data; boundary=Boundary
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="body-1"></a><a href="#body-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Body</h4>
+<pre><code class="hljs css language-javascript">
+--Boundary
+Content-Type: application/json
+Content-Disposition: form-data; name="attributes"
+"[{
+  "id":"http://attribute-url/1",
+  "data":{
+    "value":{
+      "image":"$document-1"
+      }
+    }
+  },
+  {
+    "id":"http://attribute-url/2",
+    "data":{
+      "value":{
+        "image":"$document-2"
+      }
+    }
+}]"
+--Boundary
+
+--Boundary
+Content-Type: image/jpeg
+Content-Disposition: form-data; name="$document-1"
+...(binary bytes of the image)...
+--Boundary
+Content-Type: image/jpeg
+Content-Disposition: form-data; name="$document-2"
+...(binary bytes of the image)...
+--Boundary
+
 </code></pre>
 <h4><a class="anchor" aria-hidden="true" id="response-2"></a><a href="#response-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Response</h4>
-<ul>
-<li><code>redirectTo</code> is a valid URL (fully-qualified <strong>or</strong> relative) that the browser will navigate to upon receiving the response.</li>
-</ul>
-<p><strong>Example:</strong></p>
-<pre><code class="hljs css language-json">{
-  <span class="hljs-attr">"redirectTo"</span>: <span class="hljs-string">"/dashboard"</span>
+<pre><code class="hljs css language-json">
+<span class="hljs-number">201</span>
+
+{ 
+  <span class="hljs-attr">"message"</span>: <span class="hljs-string">"User Created Successfully"</span> 
 }
+
 </code></pre>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/login-with-selfkey/lws-attributes.html"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/docs/additional-projects/json-schema-intro.html"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav docOnPageNav"><ul class="toc-headings"><li><a href="#server-library-overview">Server Library Overview</a></li><li><a href="#implementing-the-lws-api">Implementing the LWS API</a><ul class="toc-headings"><li><a href="#nonce-endpoint-get">Nonce Endpoint (<code>GET /</code>)</a></li><li><a href="#authentication-endpoint-post">Authentication Endpoint (<code>POST /</code>)</a></li><li><a href="#login-endpoint-post-login">Login Endpoint (<code>POST /login</code>)</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><a href="/" class="nav-home"><img src="/img/logo.png" alt="Developers" height="60"/></a><section class="sitemap"><div><h5>Docs</h5><a href="/docs/en/getting-started/selfkey-intro.html">Getting Started</a><a href="/docs/en/marketplace/marketplace-intro.html">Marketplace Integration</a><a href="/docs/en/login-with-selfkey/lws-intro.html">Login with Selfkey</a><a href="/docs/en/additional-projects/json-schema-intro.html">Additional Projects</a></div><div><h5>Resources</h5><a href="/en/resources/overview.html">View All Resources</a><a href="/en/resources/lws-nodejs.html">Login with SelfKey NodeJS SDK</a><a href="https://twitter.com/SelfKeyDevelopers" target="_blank" rel="noreferrer noopener">Selfkey Developer Twitter</a></div><div><h5>More</h5><a href="/blog">SelfKey Developer Blog</a><a href="https://github.com/SelfKeyFoundation">SelfKey Foundation GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/SelfKeyFoundation/Identity-Wallet" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2018 SelfKey Foundation</section></footer></div><script src="http://localhost:35729/livereload.js"></script></body></html>
+<h4><a class="anchor" aria-hidden="true" id="errors-1"></a><a href="#errors-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Errors</h4>
+<ul>
+<li>400</li>
+<li>401</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="4-get-auth-token"></a><a href="#4-get-auth-token" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4. <code>GET /auth/token</code></h3>
+<h4><a class="anchor" aria-hidden="true" id="headers-2"></a><a href="#headers-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Headers</h4>
+<pre><code class="hljs css language-javascript">Authorization: Bearer &lt;W-JWT&gt;
+User-Agent: SelfkeyIDW/${wallet-version}
+Origin: WEBPAGE URL or <span class="hljs-string">'IDW'</span>
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="response-3"></a><a href="#response-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Response</h4>
+<ul>
+<li><code>token</code> User Token</li>
+</ul>
+<pre><code class="hljs css language-json">
+<span class="hljs-number">200</span>
+
+{ 
+  <span class="hljs-attr">"token"</span>: <span class="hljs-string">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNDIuMjEuMzEuNTEiLCJpYXQiOjE1MTYyMzkwMjIsImV4cCI6MTUxNjQzOTAyMiwiY2hhbGxlbmdlIjoiMDJiODRjOWIyNzYyZWYzNjVhMzgxNGRlODZmZTFkMzhlNThhOTYzNWM0ZGUwYzI0ZTQ3YjlhYWNkYjI2OTZiOCJ9.ogbU0vpulk0AGRaN51fnaB04hhtVMYy_LA8u-qM0Yh4"</span> 
+}
+
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="errors-2"></a><a href="#errors-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Errors</h4>
+<ul>
+<li>400</li>
+<li>404</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="5-post-login"></a><a href="#5-post-login" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5. <code>POST /login</code></h3>
+<h4><a class="anchor" aria-hidden="true" id="headers-3"></a><a href="#headers-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Headers</h4>
+<pre><code class="hljs css language-javascript">Authorization: Bearer &lt;W-JWT&gt;
+User-Agent: SelfkeyIDW/${wallet-version}
+Origin: WEBPAGE URL or <span class="hljs-string">'IDW'</span>
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="body-2"></a><a href="#body-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Body</h4>
+<pre><code class="hljs css language-javascript">{ 
+  <span class="hljs-string">"token"</span>: <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">token</span>&gt;</span> 
+} 
+</span></code></pre>
+<h4><a class="anchor" aria-hidden="true" id="response-4"></a><a href="#response-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Response</h4>
+<pre><code class="hljs css language-json">
+<span class="hljs-number">200</span>
+
+{ 
+  <span class="hljs-attr">"redirectUrl"</span>: <span class="hljs-string">"https://example.com/success"</span> 
+}
+
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="errors-3"></a><a href="#errors-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Errors</h4>
+<ul>
+<li>400</li>
+<li>401</li>
+<li>404</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="6-get-templates"></a><a href="#6-get-templates" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>6. <code>GET /templates</code></h3>
+<h4><a class="anchor" aria-hidden="true" id="response-5"></a><a href="#response-5" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Response</h4>
+<ul>
+<li><code>templates</code> Array of templates</li>
+</ul>
+<pre><code class="hljs css language-json">
+<span class="hljs-number">200</span>
+
+{ 
+  <span class="hljs-attr">"templates"</span>: [ 
+    {
+      <span class="hljs-attr">"id"</span>: <span class="hljs-number">1</span>
+    },
+    {
+      <span class="hljs-attr">"id"</span>: <span class="hljs-number">2</span>
+    }
+  ] 
+}
+
+</code></pre>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="7-get-templates-templateid-schemajson"></a><a href="#7-get-templates-templateid-schemajson" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>7. <code>GET /templates/{templateId}/schema.json</code></h3>
+<h4><a class="anchor" aria-hidden="true" id="response-6"></a><a href="#response-6" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Response</h4>
+<ul>
+<li><code>template</code> Single template</li>
+</ul>
+<pre><code class="hljs css language-json">
+<span class="hljs-number">200</span>
+
+{
+  <span class="hljs-attr">"template"</span>: { 
+    <span class="hljs-attr">"id"</span>: <span class="hljs-number">1</span>
+  }
+}
+
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="errors-4"></a><a href="#errors-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Errors</h4>
+<ul>
+<li>404</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="8-post-files"></a><a href="#8-post-files" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>8. <code>POST /files</code></h3>
+<h4><a class="anchor" aria-hidden="true" id="headers-4"></a><a href="#headers-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Headers</h4>
+<pre><code class="hljs css language-javascript">Authorization: Bearer &lt;W-JWT&gt;
+User-Agent: SelfkeyIDW/${wallet-version}
+Origin: WEBPAGE URL or <span class="hljs-string">'IDW'</span>
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="body-3"></a><a href="#body-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Body</h4>
+<pre><code class="hljs css language-javascript">{ 
+  <span class="hljs-string">"file"</span>: <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">file</span>&gt;</span> 
+} 
+</span></code></pre>
+<h4><a class="anchor" aria-hidden="true" id="response-7"></a><a href="#response-7" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Response</h4>
+<pre><code class="hljs css language-json">
+<span class="hljs-number">200</span>
+
+{ 
+  <span class="hljs-attr">"fileId"</span>: <span class="hljs-string">"1234"</span> 
+}
+
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="errors-5"></a><a href="#errors-5" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Errors</h4>
+<ul>
+<li>400</li>
+<li>401</li>
+</ul>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="9-post-applications"></a><a href="#9-post-applications" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>9. <code>POST /applications</code></h3>
+<div class="notebox">KYC-Chain API Endpoint</div>
+<h4><a class="anchor" aria-hidden="true" id="headers-5"></a><a href="#headers-5" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Headers</h4>
+<pre><code class="hljs css language-javascript">Authorization: Bearer &lt;W-JWT&gt;
+User-Agent: SelfkeyIDW/${wallet-version}
+Origin: WEBPAGE URL or <span class="hljs-string">'IDW'</span>
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="body-4"></a><a href="#body-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Body</h4>
+<pre><code class="hljs css language-javascript">{ 
+  <span class="hljs-string">"templateId"</span>: &lt;template_id&gt;,
+  "attributes": &lt;attributes&gt;,
+  "files": &lt;files&gt;
+} 
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="response-8"></a><a href="#response-8" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Response</h4>
+<pre><code class="hljs css language-json">
+<span class="hljs-number">201</span>
+
+{ 
+  <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Application Created"</span> 
+}
+
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="errors-6"></a><a href="#errors-6" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Errors</h4>
+<ul>
+<li>400</li>
+<li>401</li>
+</ul>
+<hr>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/login-with-selfkey/lws-client.html"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/docs/login-with-selfkey/lws-int-bare.html"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav docOnPageNav"><ul class="toc-headings"><li><a href="#server-library-overview">Server Library Overview</a></li><li><a href="#implementing-the-lws-api">Implementing the LWS API</a><ul class="toc-headings"><li><a href="#full-api">Full API</a></li><li><a href="#1-get-auth-challenge">1. <code>GET /auth/challenge</code></a></li><li><a href="#2-post-auth-challenge">2. <code>POST /auth/challenge</code></a></li><li><a href="#3-post-users">3. <code>POST /users</code></a></li><li><a href="#4-get-auth-token">4. <code>GET /auth/token</code></a></li><li><a href="#5-post-login">5. <code>POST /login</code></a></li><li><a href="#6-get-templates">6. <code>GET /templates</code></a></li><li><a href="#7-get-templates-templateid-schemajson">7. <code>GET /templates/{templateId}/schema.json</code></a></li><li><a href="#8-post-files">8. <code>POST /files</code></a></li><li><a href="#9-post-applications">9. <code>POST /applications</code></a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><a href="/" class="nav-home"><img src="/img/logo.png" alt="Developers" height="60"/></a><section class="sitemap"><div><h5>Docs</h5><a href="/docs/en/getting-started/selfkey-intro.html">Getting Started</a><a href="/docs/en/marketplace/marketplace-intro.html">Marketplace Integration</a><a href="/docs/en/login-with-selfkey/lws-intro.html">Login with Selfkey</a><a href="/docs/en/additional-projects/json-schema-intro.html">Additional Projects</a></div><div><h5>Resources</h5><a href="/en/resources/overview.html">View All Resources</a><a href="/en/resources/lws-nodejs.html">Login with SelfKey NodeJS SDK</a><a href="https://twitter.com/SelfKeyDevelopers" target="_blank" rel="noreferrer noopener">Selfkey Developer Twitter</a></div><div><h5>More</h5><a href="/blog">SelfKey Developer Blog</a><a href="https://github.com/SelfKeyFoundation">SelfKey Foundation GitHub</a><a class="github-button" data-icon="octicon-star" data-count-href="/SelfKeyFoundation/Identity-Wallet" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2019 SelfKey Foundation</section></footer></div><script src="http://localhost:35729/livereload.js"></script></body></html>

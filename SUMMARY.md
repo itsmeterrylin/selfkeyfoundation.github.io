@@ -15,5 +15,10 @@
 
 ## Resources
 
+* [Help & Support Contacts](resources/help-and-support-contacts.md)
+
 ## Diagrams
+
+* [API Login Flow: Marketplace](diagrams/api-login-flow-marketplace.md)
+* [API Login Flow: Extension](diagrams/api-login-flow-extension.md)
 

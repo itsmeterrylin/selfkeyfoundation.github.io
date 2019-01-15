@@ -6,7 +6,7 @@
 
 * [API Overview](selfkey-docs/untitled.md)
 * [SelfKey Extension API](selfkey-docs/api-endpoints.md)
-* [SelfKey Marketplace API](selfkey-docs/faq.md)
+* [SelfKey Marketplace API](selfkey-docs/selfkey-marketplace-api.md)
 
 ## Guides
 

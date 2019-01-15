@@ -1,4 +1,4 @@
-# SelfKey Marketplace
+# SelfKey Marketplace API
 
 ## Can I become who I want to be?
 

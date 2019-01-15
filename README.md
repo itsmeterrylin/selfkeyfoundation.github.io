@@ -2,7 +2,7 @@
 description: An integration guide to listing in the SelfKey Marketplace.
 ---
 
-# Developer Documentation
+# Getting Started
 
 ## Authentication Methods
 

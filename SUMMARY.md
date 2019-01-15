@@ -1,13 +1,21 @@
 # Table of contents
 
-* [Developer Documentation](README.md)
+* [Getting Started](README.md)
 
-## SelfKey Browser Extension
+## Getting Started
 
-* [Extension API Endpoints](selfkey-browser-extension/api-endpoints.md)
-* [FAQ](selfkey-browser-extension/faq.md)
+* [API Overview](getting-started/untitled.md)
 
-## SelfKey Marketplace
+## Docs
 
-* [Marketplace API Endpoints](selfkey-marketplace/api-endpoints-1.md)
+* [SelfKey Extension](selfkey-docs/api-endpoints.md)
+* [SelfKey Marketplace](selfkey-docs/faq.md)
+
+## Guides
+
+* [SelfKey Extension](selfkey-marketplace/api-endpoints-1.md)
+
+## Resources
+
+## Diagrams
 

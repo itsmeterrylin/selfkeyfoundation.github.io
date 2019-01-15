@@ -1,2 +1,2 @@
-# How To Integrate: SelfKey Marketplace
+# Integration: SelfKey Marketplace
 

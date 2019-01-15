@@ -32,3 +32,19 @@ echo 'You got to trust me on this, I saved the world'
 | :--- | :--- |
 |  |  |
 
+## Ordered List
+
+1. One
+2. Two
+3. Three
+
+## Task List
+
+* [ ] Turn on the computer
+* [ ] Turn off the computer
+* [ ] Hit the computer
+* [ ] ???
+* [ ] Profit
+
+
+
